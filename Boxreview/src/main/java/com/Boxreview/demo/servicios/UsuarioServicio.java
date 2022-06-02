@@ -26,13 +26,13 @@ public class UsuarioServicio {
 
     private void validar(String nombre, String email, String contrasenia) throws Exception {
         if (nombre == null || nombre.isEmpty()) {
-            throw new Exception("El ISBN no puede ser nulo");
+            throw new Exception("El nombre no puede ser nulo");
         }
         if (email == null || email.isEmpty()) {
-            throw new Exception("El titulo no puede ser nulo");
+            throw new Exception("El email no puede ser nulo");
         }
-        if (contrasenia == null || contrasenia.isEmpty()) {
-            throw new Exception("El año de publicacion debe indicarse");
+        if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() <= 6 ) {
+            throw new Exception("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
     }
 }
