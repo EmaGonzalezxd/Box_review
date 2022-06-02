@@ -1,7 +1,9 @@
 package com.Boxreview.demo.entidades;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -17,9 +19,11 @@ public class Pelicula {
     private Integer año;
     private String promedio;
     
-    
+    @OneToMany
+    private List<Resena> resenas;
 
    
+    
     public String getId() {
         return id;
     }
@@ -88,6 +92,15 @@ public class Pelicula {
     public void setPromedio(String promedio) {
         this.promedio = promedio;
     }
+
+    public List<Resena> getResenas() {
+        return resenas;
+    }
+
+    public void setResenas(List<Resena> resenas) {
+        this.resenas = resenas;
+    }
+    
     
     
     

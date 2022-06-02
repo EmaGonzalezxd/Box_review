@@ -1,4 +1,3 @@
-
 package com.Boxreview.demo.servicios;
 
 import com.Boxreview.demo.entidades.Pelicula;
@@ -50,21 +49,9 @@ public class PeliculaServicio {
             throw new Exception("No se encontro la pelicula");
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    private void validar (String titulo, String genero, String director, Integer duracion, Integer año)throws Exception{
-        
-        
+    public void validar(String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
+
+
         if (titulo == null || titulo.isEmpty()) {
             throw new Exception("Coloque el titulo de la pelicula");
         }
@@ -79,13 +66,6 @@ public class PeliculaServicio {
         }
         if (duracion == null || director.isEmpty()) {
             throw new Exception("Coloque la duracion de la pelicula");
-        }  
+        }
     }
-        
-        
-
-        
-        
-    }
-    
-
+}

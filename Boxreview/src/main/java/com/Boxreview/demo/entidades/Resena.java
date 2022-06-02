@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity
@@ -19,20 +18,15 @@ public class Resena {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id; 
     
-    @Autowired
     private String titulo; 
-    
-    @Autowired
+
     private String comentario; 
-    
-    @Autowired
+
     private EnumCalificacion calificacion; 
     
-    @Autowired 
     @OneToOne
     private Usuario usuario; 
     
-    @Autowired 
     @OneToOne
     private Pelicula pelicula; 
     
