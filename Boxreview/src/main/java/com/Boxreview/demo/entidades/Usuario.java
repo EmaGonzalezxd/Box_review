@@ -15,6 +15,7 @@ public class Usuario {
     private String nombre;
     private String email;
     private String contrasenia;
+    private Boolean alta;
 
     public String getId() {
         return id;
@@ -46,6 +47,14 @@ public class Usuario {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    public Boolean getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
     }
 
 }
