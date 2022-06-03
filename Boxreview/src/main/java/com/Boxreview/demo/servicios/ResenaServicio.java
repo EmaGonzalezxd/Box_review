@@ -52,4 +52,14 @@ public class ResenaServicio {
         
         
     }
+    
+    @Transactional 
+    public void eliminar(Resena resena){
+        
+        resenaRepo.delete(resena);
+    }
+    
+    
+    
+    
 }
