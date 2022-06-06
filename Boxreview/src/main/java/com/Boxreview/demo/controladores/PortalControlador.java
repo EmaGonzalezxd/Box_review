@@ -18,9 +18,9 @@ public class PortalControlador {
 //    public String registro() {
 //        return "registro.html";
 //    }
-//    
-//    @PostMapping("/")
-//    public String registrar() {
-//        return "registro.html";
-//    }
+    
+    @PostMapping("/")
+    public String registrar() {
+        return "registro.html";
+    }
 }
