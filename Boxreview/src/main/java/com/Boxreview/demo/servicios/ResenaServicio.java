@@ -32,7 +32,7 @@ public class ResenaServicio {
 
     @Transactional
     public void modificar(String id, Usuario usuario, Pelicula pelicula,
-            String titulo, String comentario, EnumCalificacion Calificacion) {
+            String titulo, String comentario, EnumCalificacion Calificacion) throws Exception{
 
         Optional<Resena> resp = resenaRepo.findById(id);
 
@@ -44,22 +44,18 @@ public class ResenaServicio {
             resena.setTitulo(titulo);
             resena.setComentario(comentario);
             resena.setCalificacion(Calificacion);
-            
-            resenaRepo.save(resena); 
+
+            resenaRepo.save(resena);
         } else {
-            throw new Exception; 
+            throw new Exception("No se encontro la reseña");
         }
-        
-        
+
     }
-    
-    @Transactional 
-    public void eliminar(Resena resena){
-        
+
+    @Transactional
+    public void eliminar(Resena resena) {
+
         resenaRepo.delete(resena);
     }
-    
-    
-    
-    
+
 }
