@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/")
 public class PortalControlador {
 
     @GetMapping("/")
@@ -18,9 +18,9 @@ public class PortalControlador {
 //    public String registro() {
 //        return "registro.html";
 //    }
-    
-    @PostMapping("/")
-    public String registrar() {
-        return "registro.html";
-    }
+//    
+//    @PostMapping("/")
+//    public String registrar() {
+//        return "registro.html";
+//    }
 }
