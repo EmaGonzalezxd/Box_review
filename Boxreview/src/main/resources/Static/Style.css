@@ -6,6 +6,10 @@ body {
     font-family: sans-serif;
     height: 100vh;
   }
+  .nuevousuario {
+    background: url(../Fondo_nuevo_usuario.jpg);
+    background-size: 100%;
+  }
   
   .login-box {
     width: 320px;
@@ -18,6 +22,7 @@ body {
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
+    border: solid white;
   }
   
   .login-box .avatar {
@@ -53,7 +58,7 @@ body {
     border-bottom: 1px solid #fff;
     background: transparent;
     outline: none;
-    height: 40px;
+    height: 38px;
     color: #fff;
     font-size: 16px;
   }
@@ -76,12 +81,20 @@ body {
   
   .login-box a {
     text-decoration: none;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
-    color: darkgrey;
+    color:#FDF0D5;
   }
-  
+
   .login-box a:hover {
     color: #fff;
   }
-  
+
+  .btn-dark {
+    color: #fff;
+    background-color: #212529;
+    border-color: #f1efef;
+    font-size: 14px;
+    border-radius: 20px;
+    margin: 38px;
+}
