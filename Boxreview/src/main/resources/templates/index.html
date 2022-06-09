@@ -1,16 +1,94 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box review</title>
+    <link rel="stylesheet" href="../Static/Style2.css">
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <img src="" alt="">
+            <nav>
+                <ul>
+                    <li><input class="controls" type="text" placeholder="Buscar"></li>
+                    <li><a href="#">Iniciar secion</a></li>
+                    <li><a href="#">Registrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="alert alert-success" role="alert">
+        <p class="h3" th:text="${titulo}"></p>
+        <p class="h5" th:text="${descripcion}"></p>
+    </div>
+    
+    <div class="slider">
+        <ul>
+            <li>
+                <img src="https://pics.filmaffinity.com/Top_Gun_Maverick-863584703-large.jpg" alt="Top Gun"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="https://es.web.img3.acsta.net/pictures/22/01/13/15/49/5165456.jpg" alt="Uncharted, La pelicula"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg" alt="Los Secretos de Dombeldore"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="https://pics.filmaffinity.com/Muerte_en_el_Nilo-335836399-large.jpg" alt="Muerte en el Nilo"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg" alt="rapidos Y Furioso 9"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="https://pics.filmaffinity.com/Piratas_del_Caribe_En_mareas_misteriosas-755499916-large.jpg" alt="Piratas del Caribe"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="https://pics.filmaffinity.com/Matrix-155050517-large.jpg" alt="Matrix"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+            <li>
+                <img src="https://pics.filmaffinity.com/RoboCop_2-199352237-large.jpg" alt="Robocop 2"> <a class="boton" href="#" id="boton"> Ver más </a>
+            </li>
+        </ul>
+    </div>
+
+    <main class="destacada">
+        <h2>Peli destacada</h2>
+        <a href="#"> <img class="img-destacada" src="../img de proyecto/rapidosYFurioso.jpg" alt="Pelicula destacada"></a>
+        <p>Director: Justin Lin. <br><br>
+
+           Productores: Vin Diesel, Justin Lin, Samantha Vincent, Neal H. Moritz, Jeff Kirschenbaum, Clayton Townsend, Joe Roth. <br><br>
+           
+           Productoras: Universal Studios, One Race Films. <br><br>
+            
+            Dom Toretto vive una vida tranquila junto a Letty y su hijo,
+            pero el peligro siempre regresa a su vida. En esta ocasión,
+            el equipo se enfrenta a un complot mundial orquestado por el 
+            asesino más temible del mundo: el hermano de Dom.</p>
+    </main>
+
+    <h2 class="h2-generos">Generos</h2>
+    <article class="generos">
+        <div class="contenedor-botones">
+            <a class="boton" href="#" id="boton"> Terror </a>
+            <a class="boton" href="#" id="boton"> Comedia </a>
+            <a class="boton" href="#" id="boton"> Romantico </a>
+            <a class="boton" href="#" id="boton"> Suspenso </a>
+            <a class="boton" href="#" id="boton"> Policial </a>
+            <div class="contenedor-botones2">
+            <a class="boton" href="#" id="boton"> Acción </a>
+            <a class="boton" href="#" id="boton"> Ficción </a>
+            <a class="boton" href="#" id="boton"> Musical </a>
+            <a class="boton" href="#" id="boton"> Bélicas </a>
+            <a class="boton" href="#" id="boton"> Aventuras </a>
+        </div>
+        </div>
+    </article>
+</body>
+
 </html>
