@@ -1,8 +1,10 @@
 package com.Boxreview.demo.servicios;
 
+import com.Boxreview.demo.ErrorServicio.ErrorServicio;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.repositorios.UsuarioRepositorio;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,8 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    public void crear(String nombre, String email, String contrasenia) throws Exception {
+    @Transactional
+    public void crear(String nombre, String email, String contrasenia) throws ErrorServicio {
 
         validar(nombre, email, contrasenia);
 
@@ -25,10 +28,11 @@ public class UsuarioServicio {
         usuarioRepositorio.save(usuario);
     }
 
-    public void modificarNombre(String nombre, String id) throws Exception {
+    @Transactional
+    public void modificarNombre(String nombre, String id) throws ErrorServicio {
 
         if (nombre == null || nombre.isEmpty()) {
-            throw new Exception("El nombre no puede ser nulo");
+            throw new ErrorServicio("El nombre no puede ser nulo");
         }
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
@@ -38,19 +42,19 @@ public class UsuarioServicio {
 
             usuarioRepositorio.save(usuario);
         } else {
-            throw new Exception("No se encontro el usuario deseado");
+            throw new ErrorServicio("No se encontro el usuario deseado");
         }
     }
 
-    private void validar(String nombre, String email, String contrasenia) throws Exception {
+    private void validar(String nombre, String email, String contrasenia) throws ErrorServicio {
         if (nombre == null || nombre.isEmpty()) {
-            throw new Exception("El nombre no puede ser nulo");
+            throw new ErrorServicio("El nombre no puede ser nulo");
         }
         if (email == null || email.isEmpty()) {
-            throw new Exception("El email no puede ser nulo");
+            throw new ErrorServicio("El email no puede ser nulo");
         }
         if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() <= 6) {
-            throw new Exception("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
+            throw new ErrorServicio("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
     }
 }
