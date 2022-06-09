@@ -13,54 +13,56 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ResenaServicio {
-
+    
     @Autowired
     private ResenaRepositorio resenaRepositorio;
-
+    
     @Transactional
     public void crear(String titulo, String comentario,
             EnumCalificacion Calificacion, Usuario usuario, Pelicula pelicula) throws ErrorServicio {
-
+        
+        validar(titulo, comentario, Calificacion, usuario, pelicula);
+        
         Resena resena = new Resena();
         resena.setUsuario(usuario);
         resena.setPelicula(pelicula);
         resena.setTitulo(titulo);
         resena.setComentario(comentario);
         resena.setCalificacion(Calificacion);
-
+        
         resenaRepositorio.save(resena);
     }
-
+    
     @Transactional
     public void modificar(String id, Usuario usuario, Pelicula pelicula,
             String titulo, String comentario, EnumCalificacion Calificacion) throws ErrorServicio {
-
+        
         Optional<Resena> respuesta = resenaRepositorio.findById(id);
-
+        
         if (respuesta.isPresent()) {
-
+            
             Resena resena = respuesta.get();
-
+            
             resena.setPelicula(pelicula);
             resena.setTitulo(titulo);
             resena.setComentario(comentario);
             resena.setCalificacion(Calificacion);
-
+            
             resenaRepositorio.save(resena);
         } else {
             throw new ErrorServicio("No se encontro la reseña");
         }
-
+        
     }
-
+    
     @Transactional
     public void eliminar(Resena resena) {
-
+        
         resenaRepositorio.delete(resena);
     }
     
     public void validar(String titulo, String comentario,
-            EnumCalificacion Calificacion, Usuario usuario, Pelicula pelicula) throws ErrorServicio{
+            EnumCalificacion Calificacion, Usuario usuario, Pelicula pelicula) throws ErrorServicio {
         if (titulo == null || titulo.isEmpty()) {
             throw new ErrorServicio("El titulo no puede ser nulo");
         }
@@ -77,5 +79,5 @@ public class ResenaServicio {
             throw new ErrorServicio("La pelicula no puede ser nulo");
         }
     }
-
+    
 }
