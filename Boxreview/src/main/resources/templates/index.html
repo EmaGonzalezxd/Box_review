@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,12 @@
             </nav>
         </div>
     </header>
+    
+    <div class="alert alert-success" role="alert">
+        <p class="h3" th:text="${titulo}"></p>
+        <p class="h5" th:text="${descripcion}"></p>
+    </div>
+    
     <div class="slider">
         <ul>
             <li>

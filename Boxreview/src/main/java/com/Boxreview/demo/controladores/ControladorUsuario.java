@@ -8,31 +8,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-//@Controller
-//@RequestMapping("/crear")
-//public class ControladorUsuario {
-//
-//    @Autowired
-//    private UsuarioServicio usuarioServicio;
-//
-//    @PostMapping("/registrar")
-//    public String registrar(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
-//
-//        System.out.println("Nombre: " + nombre);
-//        System.out.println("Apellido: " + apellido);
-//        System.out.println("Email: " + email);
-//        System.out.println("contra: " + contrasenia);
-//        
-//        return "index.html";
-//    }
-////        try {
-////            usuarioServicio.crear(nombre, apellido, email, contrasenia);
-////        } catch (Exception ex) {
-//////            modelo.put("error", ex.getMessage());
-////            return "Registro.html";
-////        }
-//////        modelo.put("titulo", "Felicidades!");
-//////        modelo.put("descripcion", "Autor registrado satisfactoriamente.");
-////        return "index.html";
-//    
-//}
+@Controller
+@RequestMapping("/crear")
+public class ControladorUsuario {
+
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
+    @PostMapping("/registrar")
+    public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
+
+    
+        try {
+            usuarioServicio.crear(nombre, apellido, email, contrasenia);
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+            return "Registro.html";
+        }
+        modelo.put("titulo", "Felicidades!");
+        modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+        return "index.html";
+    }
+}
