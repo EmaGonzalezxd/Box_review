@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/crear")
+@RequestMapping("/registro")
 public class ControladorUsuario {
 
     @Autowired
@@ -23,7 +23,7 @@ public class ControladorUsuario {
             usuarioServicio.crear(nombre, apellido, email, contrasenia);
         } catch (Exception ex) {
             modelo.put("error", ex.getMessage());
-            return "Registro.html";
+            return "/registro.html";
         }
         modelo.put("titulo", "Felicidades!");
         modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
