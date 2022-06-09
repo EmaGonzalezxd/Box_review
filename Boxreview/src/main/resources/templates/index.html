@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -22,31 +22,37 @@
             </nav>
         </div>
     </header>
+    
+    <div class="alert alert-success" role="alert">
+        <p class="h3" th:text="${titulo}"></p>
+        <p class="h5" th:text="${descripcion}"></p>
+    </div>
+    
     <div class="slider">
         <ul>
             <li>
-                <img src="../img de proyecto/descarga.jpg" alt="Top Gun"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Top_Gun_Maverick-863584703-large.jpg" alt="Top Gun"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/Uncharted-417211360-large.jpg" alt="Uncharted, La pelicula"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://es.web.img3.acsta.net/pictures/22/01/13/15/49/5165456.jpg" alt="Uncharted, La pelicula"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/descarga (1).jpg" alt="Los Secretos de Dombeldore"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg" alt="Los Secretos de Dombeldore"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/Muerte_en_el_Nilo-335836399-large.jpg" alt="Muerte en el Nilo"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Muerte_en_el_Nilo-335836399-large.jpg" alt="Muerte en el Nilo"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/rapidosYFurioso.jpg" alt="rapidos Y Furioso 9"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg" alt="rapidos Y Furioso 9"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/Piratas_del_Caribe_En_mareas_misteriosas-755499916-large.jpg" alt="Piratas del Caribe"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Piratas_del_Caribe_En_mareas_misteriosas-755499916-large.jpg" alt="Piratas del Caribe"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/Matrix-155050517-large.jpg" alt="Matrix"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Matrix-155050517-large.jpg" alt="Matrix"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="../img de proyecto/RoboCop_2-199352237-large.jpg" alt="Robocop 2"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/RoboCop_2-199352237-large.jpg" alt="Robocop 2"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
         </ul>
     </div>
