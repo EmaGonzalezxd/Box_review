@@ -12,12 +12,13 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    public void crear(String nombre, String email, String contrasenia) throws Exception {
+    public void crear(String nombre, String email, String contrasenia, String apellido) throws Exception {
 
-        validar(nombre, email, contrasenia);
+        validar(nombre, apellido, email, contrasenia);
 
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
+        usuario.setApellido(apellido);
         usuario.setEmail(email);
         usuario.setContrasenia(contrasenia);
         usuario.setAlta(Boolean.TRUE);
@@ -42,8 +43,11 @@ public class UsuarioServicio {
         }
     }
 
-    private void validar(String nombre, String email, String contrasenia) throws Exception {
+    private void validar(String nombre, String apellido, String email, String contrasenia) throws Exception {
         if (nombre == null || nombre.isEmpty()) {
+            throw new Exception("El nombre no puede ser nulo");
+        }
+        if (apellido == null || apellido.isEmpty()) {
             throw new Exception("El nombre no puede ser nulo");
         }
         if (email == null || email.isEmpty()) {
