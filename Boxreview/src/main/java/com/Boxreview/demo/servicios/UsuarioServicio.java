@@ -47,12 +47,12 @@ public class UsuarioServicio {
         }
     }
 
-    private void validar(String nombre, String email, String contrasenia) throws ErrorServicio {
+    private void validar(String nombre, String apellido, String email, String contrasenia) throws ErrorServicio {
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre no puede ser nulo");
         }
         if (apellido == null || apellido.isEmpty()) {
-            throw new Exception("El nombre no puede ser nulo");
+            throw new ErrorServicio("El nombre no puede ser nulo");
         }
         if (email == null || email.isEmpty()) {
             throw new ErrorServicio("El email no puede ser nulo");
