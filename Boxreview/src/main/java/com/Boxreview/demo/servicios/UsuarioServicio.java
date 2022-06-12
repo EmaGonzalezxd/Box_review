@@ -41,6 +41,19 @@ public class UsuarioServicio {
             throw new Exception("No se encontro el usuario deseado");
         }
     }
+    
+    private void buscarUsuario(String id){
+        
+         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setNombre(nombre);
+
+            usuarioRepositorio.save(usuario);
+        } else {
+            throw new Exception("No se encontro el usuario deseado");
+        }
+    }
 
     private void validar(String nombre, String email, String contrasenia) throws Exception {
         if (nombre == null || nombre.isEmpty()) {
@@ -53,4 +66,6 @@ public class UsuarioServicio {
             throw new Exception("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
     }
+    
+    
 }
