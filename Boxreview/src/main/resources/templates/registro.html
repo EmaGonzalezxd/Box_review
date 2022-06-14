@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Style.css">
+        <title>Registro</title>
+    </head>
+    <body  class="nuevousuario">
+        <div class="login-box">
+            <img src="../Logo_box_review.png" class="avatar" alt="anonymous">
+            <h1>Registrarse</h1>
+
+            <form action="/registro/registrar" method="POST">
+                <label for="nombre">Nombre</label>
+                <input type="text" placeholder="nombre" id="nombre" name="nombre">
+                <label for="apellido">apellido</label>
+                <input type="text" placeholder="apellido" id="apellido" name="apellido">
+                <label for="email">Email</label>
+                <input type="text" placeholder="email" id="email" name="email">
+                <label for="contrasenia">Contraseña nueva</label>
+                <input type="password" placeholder="clave" id="contrasenia" name="contrasenia">
+
+                <input type="submit" value="Registrarse">
+            </form>
+        </div>
+    </body>
+</html>
