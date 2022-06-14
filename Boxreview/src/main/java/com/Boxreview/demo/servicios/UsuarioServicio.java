@@ -16,6 +16,7 @@ public class UsuarioServicio {
 
         validar(nombre, email, contrasenia);
 
+        
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setEmail(email);
@@ -42,17 +43,16 @@ public class UsuarioServicio {
         }
     }
     
-    private void buscarUsuario(String id){
+    public Usuario buscarUsuario(String id, String nombre){
         
          Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
-            Usuario usuario = respuesta.get();
-            usuario.setNombre(nombre);
 
-            usuarioRepositorio.save(usuario);
+            return usuarioRepositorio.buscarPorNombre(nombre); 
+            
         } else {
-            throw new Exception("No se encontro el usuario deseado");
-        }
+            throw new ErrorServicio("");
+        } 
     }
 
     private void validar(String nombre, String email, String contrasenia) throws Exception {
