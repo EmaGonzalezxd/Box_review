@@ -1,11 +1,12 @@
 package com.Boxreview.demo.entidades;
 
-import lombok.Data;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
