@@ -11,14 +11,19 @@
     <title>Registro</title>
 </head>
 <body>
+    
+    <div class="alert alert-warning" role="alert">
+        <p class="h3" th:text="${error}"></p>
+    </div>
+    
     <div class="login-box">
         <img src="../Logo_box_review.png" class="avatar" alt="anonymous">
         <h1>Iniciar Sesión</h1>
-        <form action="/registrar" method="POST">
-          <label for="Usuario">Usuario</label>
-          <input id="Usuario" type="text" placeholder="Usuario">
-          <label for="password">clave</label>
-          <input id="password" type="password" placeholder="clave">
+        <form action="/registrar/logear" method="POST">
+          <label for="nombre">Nombre de Usuario</label>
+          <input id="nombre" name="nombre" type="text" placeholder="nombre">
+          <label for="contrasenia">clave</label>
+          <input id="contrasenia" name="contrasenia" type="password" placeholder="contrasenia">
           <input type="submit" value="Ingresar">
           
         </form>

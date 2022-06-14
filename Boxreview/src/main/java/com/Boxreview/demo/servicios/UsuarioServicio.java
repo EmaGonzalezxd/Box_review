@@ -46,6 +46,20 @@ public class UsuarioServicio {
             throw new ErrorServicio("No se encontro el usuario deseado");
         }
     }
+    
+    public void iniciarSesion(String nombre, String contrasenia) throws ErrorServicio {
+
+        if (nombre == null || nombre.isEmpty()) {
+            throw new ErrorServicio("El nombre no puede ser nulo");
+        }
+
+        Optional<Usuario> respuesta = usuarioRepositorio.buscarPorNombre(nombre);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+        } else {
+            throw new ErrorServicio("No se encontro el usuario deseado");
+        }
+    }
 
     private void validar(String nombre, String apellido, String email, String contrasenia) throws ErrorServicio {
         if (nombre == null || nombre.isEmpty()) {
