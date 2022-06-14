@@ -7,11 +7,14 @@ import com.Boxreview.demo.entidades.Foto;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio implements UserDetailsService{
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -81,5 +84,13 @@ public class UsuarioServicio {
         if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() <= 6) {
             throw new ErrorServicio("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+         Usuario usuario = usuarioRepositorio.buscarPorMail(email);
+         if(usuario != null){
+             User user = new User(usuario.getMail(),usuario.getClave(),)
+         }
     }
 }
