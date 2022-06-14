@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/crear")
+@RequestMapping("/registro")
 public class ControladorUsuario {
 
     @Autowired
@@ -18,15 +18,15 @@ public class ControladorUsuario {
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
-    
         try {
             usuarioServicio.crear(nombre, apellido, email, contrasenia);
+            modelo.put("titulo", "Felicidades!");
+            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+            return "index.html";
         } catch (Exception ex) {
             modelo.put("error", ex.getMessage());
-            return "Registro.html";
+            return "/registro.html";
         }
-        modelo.put("titulo", "Felicidades!");
-        modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
-        return "index.html";
+
     }
 }
