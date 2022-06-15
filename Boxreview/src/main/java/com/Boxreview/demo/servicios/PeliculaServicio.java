@@ -14,7 +14,7 @@ public class PeliculaServicio {
 
     @Autowired
     private PeliculaRepositorio peliculaRepositorio;
-    
+
     @Autowired
     private FotoServicio fotoServicio;
 
@@ -29,11 +29,9 @@ public class PeliculaServicio {
         pelicula.setDirector(director);
         pelicula.setAño(año);
         pelicula.setDuracion(duracion);
-        
-        
+
         Foto foto = fotoServicio.guardar(archivo);
         pelicula.setFoto(foto);
-        
 
         peliculaRepositorio.save(pelicula);
     }
@@ -51,12 +49,12 @@ public class PeliculaServicio {
             pelicula.setDirector(director);
             pelicula.setAño(año);
             pelicula.setDuracion(duracion);
-            
+
             String idFoto = null;
-            if(pelicula.getFoto() != null){
-                idFoto = pelicula.getFoto().getId();              
+            if (pelicula.getFoto() != null) {
+                idFoto = pelicula.getFoto().getId();
             }
-            
+
             Foto foto = fotoServicio.actualizar(idFoto, archivo);
             pelicula.setFoto(foto);
 
