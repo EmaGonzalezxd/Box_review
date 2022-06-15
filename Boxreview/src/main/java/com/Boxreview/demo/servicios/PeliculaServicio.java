@@ -1,20 +1,25 @@
 package com.Boxreview.demo.servicios;
 
+import com.Boxreview.demo.entidades.Foto;
 import com.Boxreview.demo.entidades.Pelicula;
 import com.Boxreview.demo.repositorios.PeliculaRepositorio;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PeliculaServicio {
 
     @Autowired
     private PeliculaRepositorio peliculaRepositorio;
+    
+    @Autowired
+    private FotoServicio fotoServicio;
 
     @Transactional
-    public void crear(String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
+    public void crear(MultipartFile archivo, String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
 
         validar(titulo, genero, director, duracion, año);
 
@@ -24,12 +29,17 @@ public class PeliculaServicio {
         pelicula.setDirector(director);
         pelicula.setAño(año);
         pelicula.setDuracion(duracion);
+        
+        
+        Foto foto = fotoServicio.guardar(archivo);
+        pelicula.setFoto(foto);
+        
 
         peliculaRepositorio.save(pelicula);
     }
 
     @Transactional
-    public void modificar(String id, String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
+    public void modificar(MultipartFile archivo, String id, String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
 
         validar(titulo, genero, director, duracion, año);
 
@@ -41,6 +51,14 @@ public class PeliculaServicio {
             pelicula.setDirector(director);
             pelicula.setAño(año);
             pelicula.setDuracion(duracion);
+            
+            String idFoto = null;
+            if(pelicula.getFoto() != null){
+                idFoto = pelicula.getFoto().getId();              
+            }
+            
+            Foto foto = fotoServicio.actualizar(idFoto, archivo);
+            pelicula.setFoto(foto);
 
             peliculaRepositorio.save(pelicula);
         } else {
