@@ -26,10 +26,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -54,7 +54,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		 <version>1.18.22</version>
+		 <version>1.18.24</version>
 		 <type>jar</type>
 		</dependency>
 		<dependency>
@@ -67,17 +67,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-	 <dependency>
-	  <groupId>org.springframework.security</groupId>
-	  <artifactId>spring-security-core</artifactId>
-	  <version>5.7.1</version>
-	  <type>jar</type>
-	 </dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
