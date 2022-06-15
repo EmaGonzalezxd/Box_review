@@ -2,7 +2,6 @@ package com.Boxreview.demo.entidades;
 
 
 import com.Boxreview.demo.enumerations.EnumRol;
-import lombok.Data;
 
 
 import javax.persistence.Entity;
@@ -14,8 +13,8 @@ import javax.persistence.OneToOne;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
 @Data
+@Entity
 public class Usuario {
 
     @Id
