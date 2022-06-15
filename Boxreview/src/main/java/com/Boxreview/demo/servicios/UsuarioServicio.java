@@ -14,19 +14,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class UsuarioServicio implements UserDetailsService{
+public class UsuarioServicio{
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     
     @Autowired
     private FotoServicio fotoServicio;
+    
+    @Autowired
+    private NotificacionServicio notificacionServicio;
 
     @Transactional
     public void crear(MultipartFile archivo,String nombre, String apellido, String email, String contrasenia ) throws ErrorServicio, Exception {
 
         validar(nombre, apellido, email, contrasenia);
 
+        
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
@@ -42,6 +46,8 @@ public class UsuarioServicio implements UserDetailsService{
         
 
         usuarioRepositorio.save(usuario);
+        
+        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
     }
 
     @Transactional
@@ -70,6 +76,18 @@ public class UsuarioServicio implements UserDetailsService{
             throw new ErrorServicio("No se encontro el usuario deseado");
         }
     }
+    
+    public Usuario buscarUsuario(String id, String nombre){
+        
+         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+
+            return usuarioRepositorio.buscarPorNombre(nombre); 
+            
+        } else {
+            throw new ErrorServicio("");
+        } 
+    }
 
     private void validar(String nombre, String apellido, String email, String contrasenia) throws ErrorServicio {
         if (nombre == null || nombre.isEmpty()) {
@@ -85,12 +103,18 @@ public class UsuarioServicio implements UserDetailsService{
             throw new ErrorServicio("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
     }
-
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-         Usuario usuario = usuarioRepositorio.buscarPorMail(email);
-         if(usuario != null){
-             User user = new User(usuario.getMail(),usuario.getClave(),)
-         }
-    }
+//<<<<<<< HEAD
+//    
+//    
+//=======
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//         Usuario usuario = usuarioRepositorio.buscarPorMail(email);
+//         if(usuario != null){
+//             User user = new User(usuario.getMail(),usuario.getClave(),)
+//         }
+//    }
+//>>>>>>> ed3309c098bc6eba80fc92ed17ab48c71c80f37e
+        
 }
