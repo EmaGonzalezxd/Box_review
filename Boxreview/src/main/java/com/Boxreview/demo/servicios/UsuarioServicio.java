@@ -86,18 +86,6 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("No se encontro el usuario deseado");
         }
     }
-    
-    public Usuario buscarUsuario(String id, String nombre){
-        
-         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-
-            return usuarioRepositorio.buscarPorNombre(nombre); 
-            
-        } else {
-            throw new ErrorServicio("");
-        } 
-    }
 
     public void iniciarSesion(String nombre, String contrasenia) throws ErrorServicio {
 
