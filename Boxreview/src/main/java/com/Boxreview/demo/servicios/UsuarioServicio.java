@@ -53,8 +53,8 @@ public class UsuarioServicio implements UserDetailsService {
         String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
         usuario.setContrasenia(contraEncriptada);
         
-        Foto foto = fotoServicio.guardar(archivo);
-        usuario.setFoto(foto);
+//        Foto foto = fotoServicio.guardar(archivo);
+//        usuario.setFoto(foto);
 
         usuarioRepositorio.save(usuario);
         
@@ -111,7 +111,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (email == null || email.isEmpty()) {
             throw new ErrorServicio("El email no puede ser nulo");
         }
-        if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() <= 6) {
+        if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() < 6) {
             throw new ErrorServicio("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
     }

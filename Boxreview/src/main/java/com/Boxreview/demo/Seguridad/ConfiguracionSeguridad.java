@@ -37,11 +37,11 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email")
                 .passwordParameter("contrasenia")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/registro")
                 .permitAll()
                 .and().logout()
-                .logoutUrl("/login")
-                .logoutSuccessUrl("")
+                .logoutUrl("/index")
+                .logoutSuccessUrl("/")
                 .permitAll().
                 and().csrf().disable();
     }

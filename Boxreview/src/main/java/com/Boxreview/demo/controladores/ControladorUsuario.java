@@ -26,23 +26,8 @@ public class ControladorUsuario {
             return "index.html";
         } catch (Exception ex) {
             modelo.put("error", ex.getMessage());
-            return "/registro.html";
+            return "registro.html";
         }
 
-    }
-    
-    @PostMapping("/logear")
-    public String logear(ModelMap modelo, @RequestParam String nombre, @RequestParam String email, @RequestParam String contrasenia) {
-
-    
-        try {
-            usuarioServicio.iniciarSesion(nombre, contrasenia);
-        } catch (ErrorServicio ex) {
-            modelo.put("error", ex.getMessage());
-            return "login.html";
-        }
-        modelo.put("titulo", "Felicidades!");
-        modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
-        return "index.html";
     }
 }
