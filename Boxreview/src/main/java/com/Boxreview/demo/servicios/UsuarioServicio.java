@@ -53,12 +53,12 @@ public class UsuarioServicio implements UserDetailsService {
         String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
         usuario.setContrasenia(contraEncriptada);
         
-//        Foto foto = fotoServicio.guardar(archivo);
-//        usuario.setFoto(foto);
+        Foto foto = fotoServicio.guardar(archivo);
+        usuario.setFoto(foto);
 
         usuarioRepositorio.save(usuario);
         
-        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
+//        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
     }
 
     @Transactional
@@ -134,7 +134,7 @@ public class UsuarioServicio implements UserDetailsService {
             User user = new User(usuario.getEmail(), usuario.getContrasenia(), permisos);
             return user;
         } else {
-            return null;
+            throw new UsernameNotFoundException("algo no andaa");
         }
     }
 
