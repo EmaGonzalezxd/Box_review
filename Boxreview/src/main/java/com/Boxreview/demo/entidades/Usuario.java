@@ -1,8 +1,11 @@
 package com.Boxreview.demo.entidades;
 
+import com.Boxreview.demo.enumerations.EnumRol;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -22,6 +25,8 @@ public class Usuario {
     private String contrasenia;
     private Boolean alta;
     
+    @Enumerated(EnumType.STRING)
+    private EnumRol rol;
     
     @OneToOne
     private Foto foto;

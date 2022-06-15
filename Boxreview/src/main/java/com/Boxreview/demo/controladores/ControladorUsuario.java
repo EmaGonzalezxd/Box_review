@@ -1,5 +1,6 @@
 package com.Boxreview.demo.controladores;
 
+import com.Boxreview.demo.ErrorServicio.ErrorServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ public class ControladorUsuario {
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
         try {
-            usuarioServicio.crear(nombre, apellido, email, contrasenia);
+            usuarioServicio.crear(null, nombre, apellido, email, contrasenia);
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
             return "index.html";
@@ -28,5 +29,20 @@ public class ControladorUsuario {
             return "/registro.html";
         }
 
+    }
+    
+    @PostMapping("/logear")
+    public String logear(ModelMap modelo, @RequestParam String nombre, @RequestParam String email, @RequestParam String contrasenia) {
+
+    
+        try {
+            usuarioServicio.iniciarSesion(nombre, contrasenia);
+        } catch (ErrorServicio ex) {
+            modelo.put("error", ex.getMessage());
+            return "login.html";
+        }
+        modelo.put("titulo", "Felicidades!");
+        modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+        return "index.html";
     }
 }
