@@ -24,19 +24,25 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
+
 public class UsuarioServicio implements UserDetailsService {
+
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
     private FotoServicio fotoServicio;
+    
+    @Autowired
+    private NotificacionServicio notificacionServicio;
 
     @Transactional
     public void crear(MultipartFile archivo, String nombre, String apellido, String email, String contrasenia) throws ErrorServicio, Exception {
 
         validar(nombre, apellido, email, contrasenia);
 
+        
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
@@ -51,6 +57,8 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setFoto(foto);
 
         usuarioRepositorio.save(usuario);
+        
+        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
     }
 
     @Transactional
@@ -77,6 +85,18 @@ public class UsuarioServicio implements UserDetailsService {
         } else {
             throw new ErrorServicio("No se encontro el usuario deseado");
         }
+    }
+    
+    public Usuario buscarUsuario(String id, String nombre){
+        
+         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+
+            return usuarioRepositorio.buscarPorNombre(nombre); 
+            
+        } else {
+            throw new ErrorServicio("");
+        } 
     }
 
     public void iniciarSesion(String nombre, String contrasenia) throws ErrorServicio {
@@ -108,6 +128,7 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
@@ -128,4 +149,6 @@ public class UsuarioServicio implements UserDetailsService {
             return null;
         }
     }
+
+
 }
