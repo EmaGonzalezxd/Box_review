@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +11,22 @@
     <title>Registro</title>
 </head>
 <body>
+    
+    <div class="alert alert-warning" role="alert">
+        <p class="h3" th:text="${error}"></p>
+    </div>
+    
     <div class="login-box">
         <img src="../Logo_box_review.png" class="avatar" alt="anonymous">
         <h1>Iniciar Sesión</h1>
-        <form action="/registrar" method="POST">
-          <label for="email">Correo electronico</label>
-          <input id="email" type="text" placeholder="correo electronico">
-          <label for="password">Clave</label>
-          <input id="password" type="password" placeholder="clave">
+
+        <form action="/logincheck" method="POST">
+          <label for="email">Correo Electronico</label>
+          <input id="email" name="email" type="text" placeholder="email">
+          <label for="contrasenia">clave</label>
+          <input id="contrasenia" name="contrasenia" type="password" placeholder="contrasenia">
+
+
           <input type="submit" value="Ingresar">
           
         </form>
