@@ -4,18 +4,27 @@ import com.Boxreview.demo.ErrorServicio.ErrorServicio;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.repositorios.UsuarioRepositorio;
 import com.Boxreview.demo.entidades.Foto;
+import com.Boxreview.demo.enumerations.EnumRol;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class UsuarioServicio /*implements UserDetailsService */{
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -32,9 +41,12 @@ public class UsuarioServicio /*implements UserDetailsService */{
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
-        usuario.setContrasenia(contrasenia);
         usuario.setAlta(Boolean.TRUE);
-
+        usuario.setRol(EnumRol.USUARIO);
+        
+        String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
+        usuario.setContrasenia(contraEncriptada);
+        
         Foto foto = fotoServicio.guardar(archivo);
         usuario.setFoto(foto);
 
@@ -96,11 +108,24 @@ public class UsuarioServicio /*implements UserDetailsService */{
         }
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        Usuario usuario = usuarioRepositorio.buscarPorMail(email);
-//        if (usuario != null) {
-//            User user = new User(usuario.getEmail(), usuario.getContrasenia());
-//        }
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+        
+        if (usuario != null) {
+            List<GrantedAuthority> permisos = new ArrayList<>();
+            
+            GrantedAuthority p1  = new SimpleGrantedAuthority("ROLE_"+ usuario.getRol());
+            permisos.add(p1);
+            
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", usuario);
+            
+            User user = new User(usuario.getEmail(), usuario.getContrasenia(), permisos);
+            return user;
+        } else {
+            return null;
+        }
+    }
 }
