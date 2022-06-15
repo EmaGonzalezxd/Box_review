@@ -20,7 +20,11 @@ public class ControladorUsuario {
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
         try {
+<<<<<<< HEAD
             usuarioServicio.crear(null, nombre, apellido, email, contrasenia);
+=======
+            usuarioServicio.crear(null ,nombre, apellido, email, contrasenia);
+>>>>>>> 91e735303d33ee9062e784c16af8a8469fa83cda
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
             return "index.html";
