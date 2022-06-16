@@ -6,69 +6,124 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Box review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/Style2.css">
-</head>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+            </div>
+            <div class="container">
+                <a class="navbar-brand" href=index.html>
+                    <img src="img/Logo_box_review.png" class="avatar" alt="" width="80" height="80">
+                </a>
+            </div>
+        </nav>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="titulo,genero,actor"
+                        aria-label="Search">
+                    <button type="button" class="btn btn-outline-secondary">Buscar</button>
 
-<body>
-    <header>
-        <div class="menu">
-            <img src="" alt="">
-            <nav>
-                <ul>
-                    <li><input class="controls" type="text" placeholder="Buscar"></li>
-                    <li><a href="/login">Iniciar sesion</a></li>
-                    <li><a href="/registro">Registrarse</a></li>
-                </ul>
-            </nav>
+                </form>
+            </div>
+        </nav>
+        <nav class="navbar bg-light">
+            <form class="container-fluid justify-content-start">
+                <a class="btn btn-danger" href="Registro.html" type="button">Iniciar Secion</a>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Registrarse</button>
+            </form>
+        </nav>
         </div>
-    </header>
-    
-    <div class="alert alert-success" role="alert">
-        <p class="h3" th:text="${titulo}"></p>
-        <p class="h5" th:text="${descripcion}"></p>
+        </div>
+    </nav>
+</head>
+<body>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="modal-content">
+      <div id="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="modal-body">
+        <form action="/registrar" method="POST">
+          <label for="Usuario">Nombre</label>
+          <input type="text" placeholder="nombre">
+          <label for="apellido">apellido</label>
+          <input type="text" placeholder="apellido">
+          <label for="email">Email</label>
+          <input type="text" placeholder="email">
+          <label for="password">Contrseña nueva</label>
+          <input type="password" placeholder="clave">
+          <input type="submit" value="Registrarse">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+      </div>
     </div>
-    
+  </div>
+</div>
+
+  
+    <div class="colormedio">
+    </div>
+
     <div class="slider">
         <ul>
             <li>
-                <img src="https://pics.filmaffinity.com/Top_Gun_Maverick-863584703-large.jpg" alt="Top Gun"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Top_Gun_Maverick-863584703-large.jpg" alt="Top Gun"> <a
+                    class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="https://es.web.img3.acsta.net/pictures/22/01/13/15/49/5165456.jpg" alt="Uncharted, La pelicula"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://es.web.img3.acsta.net/pictures/22/01/13/15/49/5165456.jpg"
+                    alt="Uncharted, La pelicula"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg" alt="Los Secretos de Dombeldore"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg"
+                    alt="Los Secretos de Dombeldore"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="https://pics.filmaffinity.com/Muerte_en_el_Nilo-335836399-large.jpg" alt="Muerte en el Nilo"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Muerte_en_el_Nilo-335836399-large.jpg" alt="Muerte en el Nilo">
+                <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg" alt="rapidos Y Furioso 9"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg"
+                    alt="rapidos Y Furioso 9"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="https://pics.filmaffinity.com/Piratas_del_Caribe_En_mareas_misteriosas-755499916-large.jpg" alt="Piratas del Caribe"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Piratas_del_Caribe_En_mareas_misteriosas-755499916-large.jpg"
+                    alt="Piratas del Caribe"> <a class="boton" href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="https://pics.filmaffinity.com/Matrix-155050517-large.jpg" alt="Matrix"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/Matrix-155050517-large.jpg" alt="Matrix"> <a class="boton"
+                    href="#" id="boton"> Ver más </a>
             </li>
             <li>
-                <img src="https://pics.filmaffinity.com/RoboCop_2-199352237-large.jpg" alt="Robocop 2"> <a class="boton" href="#" id="boton"> Ver más </a>
+                <img src="https://pics.filmaffinity.com/RoboCop_2-199352237-large.jpg" alt="Robocop 2"> <a class="boton"
+                    href="#" id="boton"> Ver más </a>
             </li>
         </ul>
     </div>
 
     <main class="destacada">
         <h2>Peli destacada</h2>
-        <a href="#"> <img class="img-destacada" src="../img de proyecto/rapidosYFurioso.jpg" alt="Pelicula destacada"></a>
+        <a href="#"> <img class="img-destacada" src="../img de proyecto/rapidosYFurioso.jpg"
+                alt="Pelicula destacada"></a>
         <p>Director: Justin Lin. <br><br>
 
-           Productores: Vin Diesel, Justin Lin, Samantha Vincent, Neal H. Moritz, Jeff Kirschenbaum, Clayton Townsend, Joe Roth. <br><br>
-           
-           Productoras: Universal Studios, One Race Films. <br><br>
-            
+            Productores: Vin Diesel, Justin Lin, Samantha Vincent, Neal H. Moritz, Jeff Kirschenbaum, Clayton Townsend,
+            Joe Roth. <br><br>
+
+            Productoras: Universal Studios, One Race Films. <br><br>
+
             Dom Toretto vive una vida tranquila junto a Letty y su hijo,
             pero el peligro siempre regresa a su vida. En esta ocasión,
-            el equipo se enfrenta a un complot mundial orquestado por el 
+            el equipo se enfrenta a un complot mundial orquestado por el
             asesino más temible del mundo: el hermano de Dom.</p>
     </main>
 
@@ -81,14 +136,18 @@
             <a class="boton" href="#" id="boton"> Suspenso </a>
             <a class="boton" href="#" id="boton"> Policial </a>
             <div class="contenedor-botones2">
-            <a class="boton" href="#" id="boton"> Acción </a>
-            <a class="boton" href="#" id="boton"> Ficción </a>
-            <a class="boton" href="#" id="boton"> Musical </a>
-            <a class="boton" href="#" id="boton"> Bélicas </a>
-            <a class="boton" href="#" id="boton"> Aventuras </a>
-        </div>
+                <a class="boton" href="#" id="boton"> Acción </a>
+                <a class="boton" href="#" id="boton"> Ficción </a>
+                <a class="boton" href="#" id="boton"> Musical </a>
+                <a class="boton" href="#" id="boton"> Bélicas </a>
+                <a class="boton" href="#" id="boton"> Aventuras </a>
+            </div>
         </div>
     </article>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 
 </html>
