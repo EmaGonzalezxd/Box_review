@@ -58,7 +58,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         usuarioRepositorio.save(usuario);
         
-        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
+//        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
     }
 
     @Transactional
@@ -86,18 +86,6 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("No se encontro el usuario deseado");
         }
     }
-    
-    public Usuario buscarUsuario(String id, String nombre){
-        
-         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-
-            return usuarioRepositorio.buscarPorNombre(nombre); 
-            
-        } else {
-            throw new ErrorServicio("");
-        } 
-    }
 
     public void iniciarSesion(String nombre, String contrasenia) throws ErrorServicio {
 
@@ -123,7 +111,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (email == null || email.isEmpty()) {
             throw new ErrorServicio("El email no puede ser nulo");
         }
-        if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() <= 6) {
+        if (contrasenia == null || contrasenia.isEmpty() || contrasenia.length() < 6) {
             throw new ErrorServicio("La contraseña no debe estar vacia y debe tener mas de 6 caracteres");
         }
     }
@@ -146,7 +134,7 @@ public class UsuarioServicio implements UserDetailsService {
             User user = new User(usuario.getEmail(), usuario.getContrasenia(), permisos);
             return user;
         } else {
-            return null;
+            throw new UsernameNotFoundException("algo no andaa");
         }
     }
 
