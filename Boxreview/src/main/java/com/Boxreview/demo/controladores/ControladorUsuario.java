@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/registro")
@@ -16,16 +17,20 @@ public class ControladorUsuario {
     private UsuarioServicio usuarioServicio;
 
     @PostMapping("/registrar")
-    public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
+    public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
         try {
-            usuarioServicio.crear(null ,nombre, apellido, email, contrasenia);
-            modelo.put("titulo", "Felicidades!");
-            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+
+            usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
+//            modelo.put("titulo", "Felicidades!");
+//            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+
             return "index.html";
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
             modelo.put("error", ex.getMessage());
-            return "/registro.html";
+            return "registro.html";
         }
 
     }
