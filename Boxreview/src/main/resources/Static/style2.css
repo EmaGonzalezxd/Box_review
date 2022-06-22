@@ -124,8 +124,8 @@ input {
 
 .submit {
     cursor: pointer;
-    background-color: #b80f22
-        color: white;
+    background-color: #b80f22;
+    color: white;
 }
 .submit :hover {
     background-color: #e9a8b0;
