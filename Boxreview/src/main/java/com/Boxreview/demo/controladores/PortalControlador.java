@@ -22,5 +22,10 @@ public class PortalControlador {
     public String registro() {
         return "registro.html";
     }
+    
+    @GetMapping("/resena")
+    public String resena() {
+        return "resena.html";
+    }
 
 }
