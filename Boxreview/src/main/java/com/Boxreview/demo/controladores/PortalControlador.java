@@ -13,6 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("")
 public class PortalControlador {
+    
+    @Autowired
+    private UsuarioServicio usuarioServicio;
 
     @GetMapping("/")
     public String inicio() {
@@ -34,19 +37,18 @@ public class PortalControlador {
         return "resena.html";
     }
 
-    @Autowired
-    private UsuarioServicio usuarioServicio;
-    
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
         try {
 
             usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
-//            modelo.put("titulo", "Felicidades!");
-//            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
 
-            return "login.html";
+            modelo.put("titulo", "Felicidades!");
+            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+
+            return "index.html";
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
@@ -55,4 +57,5 @@ public class PortalControlador {
         }
 
     }
+    
 }
