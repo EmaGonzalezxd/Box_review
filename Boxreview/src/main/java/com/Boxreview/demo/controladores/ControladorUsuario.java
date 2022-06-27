@@ -13,25 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/registro")
 public class ControladorUsuario {
 
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+    
 
-    @PostMapping("/registrar")
-    public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
-
-        try {
-
-            usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
-//            modelo.put("titulo", "Felicidades!");
-//            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
-
-            return "index.html";
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
-            modelo.put("error", ex.getMessage());
-            return "registro.html";
-        }
-
-    }
+    
 }
