@@ -35,8 +35,9 @@
         </nav>
         <nav class="navbar bg-light">
             <form class="container-fluid justify-content-start">
-                <a class="btn btn-danger" href="Registro.html" type="button">Iniciar Secion</a>
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalLogin"
+                        type="button">Iniciar sesion</button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalRegistro"
                         type="button">Registrarse</button>
             </form>
         </nav>
@@ -48,9 +49,34 @@
 <body>
 </button>
 
+<!-- MODAL INICIO DE SESION-->
+
+<div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="modal-content">
+            <div id="modal-header">
+                <h1>Inicio de sesion</h1>   
+            </div>
+            <div id="modal-body">
+                <form action="/logincheck" method="POST">
+                    <label for="email">Correo Electronico</label>
+                    <input id="email" name="email" type="text" placeholder="email">
+                    <label for="contrasenia">clave</label>
+                    <input id="contrasenia" name="contrasenia" type="password" placeholder="contrasenia">
+                    <input type="submit" value="Ingresar">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- MODAL REGISTRO-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="ModalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div id="modal-content">
             <div id="modal-header">
@@ -67,7 +93,7 @@
                     <label for="email">Email</label>
                     <input type="text" placeholder="email" id="email" name="email">
 
-                    <label for="contrasenia">Contraseña nueva</label>
+                    <label for="contrasenia">Contraseña</label>
                     <input type="password" placeholder="clave" id="contrasenia" name="contrasenia">
 
                     <label for="foto">Foto</label>
