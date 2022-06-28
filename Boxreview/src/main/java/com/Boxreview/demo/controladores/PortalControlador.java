@@ -31,6 +31,11 @@ public class PortalControlador {
     public String login() {
         return "login.html";
     }
+    
+    @GetMapping("/resena")
+    public String resena() {
+        return "reseña.html";
+    }
 
 
     @PostMapping("/registrar")
