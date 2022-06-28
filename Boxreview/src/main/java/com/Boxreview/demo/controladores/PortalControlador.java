@@ -32,16 +32,19 @@ public class PortalControlador {
         return "login.html";
     }
 
+
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
         try {
 
             usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
+
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
 
             return "index.html";
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
