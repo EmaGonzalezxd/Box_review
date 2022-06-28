@@ -19,6 +19,11 @@ public class PortalControlador {
 
     @GetMapping("/")
     public String inicio() {
+        return "inicio.html";
+    }
+    
+    @GetMapping("/index")
+    public String index() {
         return "index.html";
     }
     
@@ -27,10 +32,6 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @GetMapping("/registro")
-    public String registro() {
-        return "registro.html";
-    }
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
@@ -38,10 +39,12 @@ public class PortalControlador {
         try {
 
             usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
+
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
 
             return "index.html";
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
