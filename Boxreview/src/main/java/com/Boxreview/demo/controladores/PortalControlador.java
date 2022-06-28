@@ -31,6 +31,11 @@ public class PortalControlador {
     public String login() {
         return "login.html";
     }
+    
+    @GetMapping("/resena")
+    public String resena() {
+        return "reseña.html";
+    }
 
 
     @PostMapping("/registrar")
@@ -43,13 +48,13 @@ public class PortalControlador {
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
 
-            return "index.html";
+            return "inicio.html";
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
             modelo.put("error", ex.getMessage());
-            return "index.html";
+            return "inicio.html";
         }
 
     }
