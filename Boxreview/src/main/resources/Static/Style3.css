@@ -99,7 +99,10 @@ body {
     color: #000;
 }
 
-label {
+.Search
+
+/* (label) */
+    {
     display: table-row-group;
     background-color: white;
     border: none;
@@ -166,6 +169,7 @@ input {
 .peli img {
     width: 650px;
     height: 600px;
+    box-shadow: 13px 13px 13px rgba(22, 22, 22, 0.726);
 }
 
 .info-peli {
@@ -189,16 +193,6 @@ input {
 
 
 /* CONTENEDOR DE CALIFICADOR */
-.contenedor-calificador {
-    width: 550px;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.548);
-    box-shadow: 13px 13px 13px rgba(22, 22, 22, 0.726);
-    border-radius: 30px;
-    margin-right: 210px;
-    float: right;
-}
-
 h2 {
     font-size: 20px;
     font-family: 'Oxygen', sans-serif;
@@ -218,10 +212,10 @@ h4 {
 
 .input-reseña {
     background: #535353;
+    width: 350px;
     font-size: 15px;
     padding: 12px 25px;
     margin-left: 25px;
-    margin-top: 15px;
     border: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
     outline: 0px;
@@ -231,7 +225,6 @@ h4 {
 
 
 /* CALIFICADOR DE ESTRELLAS */
-
 p.clasificacion {
     position: relative;
     overflow: hidden;
@@ -241,28 +234,181 @@ p.clasificacion {
     margin-left: 25px;
 }
 
-p.clasificacion input {
+p.clasificacion .input-reseña {
     position: absolute;
     top: -100px;
 }
 
-p.clasificacion label {
+p.clasificacion .label-estrella {
     float: right;
-    color: #333;
+    color: rgb(255, 255, 255);
 }
 
 p.clasificacion label:hover,
-p.clasificacion label:hover~label,
-p.clasificacion input:checked~label {
+p.clasificacion label:hover~.label-estrella,
+p.clasificacion input:checked~.label-estrella {
     color: rgb(255, 238, 0);
 }
 
+
+
+/* CONTENEDOR DE BOTON MODAL */
+
+.contenedor-modal {
+    width: 800px;
+    height: 120px;
+    margin-top: 300px;
+    background-color: #525252d2;
+    float: left;
+    border-radius: 15px;
+}
+
+/* BOTONES DE MODAL */
+.abrir-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: none;
+    height: auto;
+    width: 150px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    transition: all 0.3s;
+    float: right;
+}
+
+.abrir-modal:hover {
+    color: #ffffff;
+    background-color: #616161;
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.cerrar-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: none;
+    height: auto;
+    width: 120px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #545454;
+    border: none;
+    border-radius: 20px 20px 20px 20px;
+    transition: all 0.3s;
+    margin-left: 400px ;
+
+}
+
+.cerrar-modal:hover {
+    color: #ffffff;
+    background-color: #ff2424;
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.enviar-reseña {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:none;
+    height:auto;    
+    width:150px;    
+    padding:10px;
+    color:#ffffff;    
+    background-color: #545454;    
+    border:none;    
+    border-radius:15px 15px 15px 15px;
+    transition:all 0.3s;
+  }
+
+  .enviar-reseña:hover{
+    color:#ffffff;
+    background-color:#36ba38;
+    border:none;
+    border-radius:15px 15px 15px 15px;    
+  }
+  
+
+/* MODAL */
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalDialog>div {
+    width: 800px;
+    height: 300px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: rgb(44, 44, 44);
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+}
+
+.close {
+    background: #000000;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+    background: #ffffff;
+}
+
+
+
+
+/* MOSTRAR RESEÑAS */
 .contenedor-reseñas {
     width: 750px;
     height: 1000px;
-    background-color: #00a6ff;
+    background-color: #414141;
     border-radius: 30px;
-    /*     margin-right: 250px;
-    margin-left: 250px; */
-    margin-top: 350px;
+    margin-right: 250px;
+    margin-top: 50px;
+    float: left;
 }
