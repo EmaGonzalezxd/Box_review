@@ -24,20 +24,21 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 .userDetailsService(usuarioServicio)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
-    
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-//                .antMatchers("/admin/*").hasRole("ADMINISTRADOR") // Puedo dar acceso a un controlador completo, con rol especifoc
+                //.antMatchers("/admin/*").hasRole("ADMINISTRADOR") // Puedo dar acceso a un controlador completo, con rol especifoc
                 .antMatchers("/css/*", "/js/*", "/img/*",
                         "/**").permitAll()
                 .and().
                 formLogin()
-                .loginPage("/login")
+                .loginPage("/index")
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email")
                 .passwordParameter("contrasenia")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and().logout()
                 .logoutUrl("/index")

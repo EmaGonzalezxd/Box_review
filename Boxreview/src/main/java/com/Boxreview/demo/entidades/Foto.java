@@ -1,8 +1,6 @@
 package com.Boxreview.demo.entidades;
 
 import lombok.Data;
-
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
