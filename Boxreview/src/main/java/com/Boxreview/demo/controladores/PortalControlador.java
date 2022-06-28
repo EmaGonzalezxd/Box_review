@@ -19,17 +19,17 @@ public class PortalControlador {
 
     @GetMapping("/")
     public String inicio() {
+        return "inicio.html";
+    }
+    
+    @GetMapping("/index")
+    public String index() {
         return "index.html";
     }
     
     @GetMapping("/login")
     public String login() {
         return "login.html";
-    }
-
-    @GetMapping("/registro")
-    public String registro() {
-        return "registro.html";
     }
 
     @PostMapping("/registrar")
