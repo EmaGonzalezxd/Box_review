@@ -1,157 +1,123 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 
 </html>
 <html lang="es">
 
-<head>
+    <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <title>Box review</title>
-  <link rel="stylesheet" href="../Style2.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>Box review</title>
+        <link rel="stylesheet" href="../Style2.css">
+    </head>
 
+    <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+            </div>
+            <div class="container">
+                <a class="navbar-brand" href=index.html>
+                    <img src="../static/Logo_box_review.png" class="avatar" alt="" width="80" height="80">
+                </a>
+            </div>
+        </nav>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="titulo,genero,actor" aria-label="Search">
+                    <button type="button" class="btn btn-outline-secondary">Buscar</button>
 
-  <nav class="navbar navbar-expand-lg bg-light">
-    <nav class="navbar bg-light">
-      <div class="container-fluid">
-      </div>
-      <div class="container">
-        <a class="navbar-brand" href=index.html>
-          <img src="../Static/Logo_box_review.png" class="avatar" alt="" width="80" height="80">
-        </a>
-      </div>
-    </nav>
-    <nav class="navbar bg-light">
-      <div class="container-fluid">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="titulo,genero,actor" aria-label="Search">
-          <button type="button" class="btn btn-outline-secondary">Buscar</button>
+                </form>
+            </div>
+        </nav>
 
-        </form>
-      </div>
-    </nav>
-    <nav class="navbar bg-light">
-      <form class="container-fluid justify-content-start">
-        <a class="btn btn-danger" href="Registro.html" type="button">Iniciar Secion</a>
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          type="button">Registrarse</button>
-      </form>
-    </nav>
     </div>
-    </div>
-  </nav>
+</div>
+</nav>
 </head>
 
 <body>
-  </button>
+</button>
 
 
-  <!-- MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div id="modal-content">
-        <div id="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div id="modal-body">
-          <form action="/registrar" method="POST">
-            <label for="Usuario">Nombre</label>
-            <input type="text" placeholder="nombre">
-            <label for="apellido">apellido</label>
-            <input type="text" placeholder="apellido">
-            <label for="email">Email</label>
-            <input type="text" placeholder="email">
-            <label for="password">Contrseña nueva</label>
-            <input type="password" placeholder="clave">
-            <input type="submit" value="Registrarse">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SLIDER -->
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<!-- SLIDER -->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://elcritico.com.ar/wp-content/uploads/2022/05/top_gun_maverick.jpg" class="d-block w-100"
-          alt="...">
-        <a class="boton" href="#" id="boton"> Ver más </a>
-      </div>
-      <div class="carousel-item">
-        <img src="https://es.web.img3.acsta.net/pictures/22/01/13/15/49/5165456.jpg" class="d-block w-100" alt="...">
-        <a class="boton" href="#" id="boton"> Ver más </a>
-      </div>
-      <div class="carousel-item">
-        <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg" class="d-block w-100" alt="...">
-        <a class="boton" href="#" id="boton"> Ver más </a>
-      </div>
-      <div class="carousel-item">
-        <img src="https://pics.filmaffinity.com/Muerte_en_el_Nilo-335836399-large.jpg" class="d-block w-100" alt="...">
-        <a class="boton" href="#" id="boton"> Ver más </a>
-      </div>
+        <div class="carousel-item active">
+            <img src="https://elcritico.com.ar/wp-content/uploads/2022/05/top_gun_maverick.jpg" class="d-block w-100"
+                 alt="...">
+            <a class="boton" href="#" id="boton"> Ver más </a>
+        </div>
+        <div class="carousel-item">
+            <img src="https://es.web.img3.acsta.net/pictures/22/01/13/15/49/5165456.jpg" class="d-block w-100" alt="...">
+            <a class="boton" href="#" id="boton"> Ver más </a>
+        </div>
+        <div class="carousel-item">
+            <img src="https://es.web.img3.acsta.net/pictures/22/03/16/12/44/0138242.jpg" class="d-block w-100" alt="...">
+            <a class="boton" href="#" id="boton"> Ver más </a>
+        </div>
+        <div class="carousel-item">
+            <img src="https://pics.filmaffinity.com/Muerte_en_el_Nilo-335836399-large.jpg" class="d-block w-100" alt="...">
+            <a class="boton" href="#" id="boton"> Ver más </a>
+        </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>
 
 <!-- IMG DESTACADA -->
-  <main class="destacada">
+<main class="destacada">
     <h2>Peli destacada</h2>
     <a href="#"> <img class="img-destacada"
-        src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg"
-        alt="Pelicula destacada"></a>
+                      src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg"
+                      alt="Pelicula destacada"></a>
     <p>Director: Justin Lin. <br><br>
 
-      Productores: Vin Diesel, Justin Lin, Samantha Vincent, Neal H. Moritz, Jeff Kirschenbaum, Clayton Townsend, Joe
-      Roth. <br><br>
+        Productores: Vin Diesel, Justin Lin, Samantha Vincent, Neal H. Moritz, Jeff Kirschenbaum, Clayton Townsend, Joe
+        Roth. <br><br>
 
-      Productoras: Universal Studios, One Race Films. <br><br>
+        Productoras: Universal Studios, One Race Films. <br><br>
 
-      Dom Toretto vive una vida tranquila junto a Letty y su hijo,
-      pero el peligro siempre regresa a su vida. En esta ocasión,
-      el equipo se enfrenta a un complot mundial orquestado por el
-      asesino más temible del mundo: el hermano de Dom.</p>
-  </main>
+        Dom Toretto vive una vida tranquila junto a Letty y su hijo,
+        pero el peligro siempre regresa a su vida. En esta ocasión,
+        el equipo se enfrenta a un complot mundial orquestado por el
+        asesino más temible del mundo: el hermano de Dom.</p>
+</main>
 
-  <!-- GENEROS -->
-  <h2 class="h2-generos">Generos</h2>
-  <article class="generos">
+<!-- GENEROS -->
+<h2 class="h2-generos">Generos</h2>
+<article class="generos">
     <div class="contenedor-botones">
-      <a class="boton" href="#" id="boton"> Terror </a>
-      <a class="boton" href="#" id="boton"> Comedia </a>
-      <a class="boton" href="#" id="boton"> Romantico </a>
-      <a class="boton" href="#" id="boton"> Suspenso </a>
-      <a class="boton" href="#" id="boton"> Policial </a>
-      <div class="contenedor-botones2">
-        <a class="boton" href="#" id="boton"> Acción </a>
-        <a class="boton" href="#" id="boton"> Ficción </a>
-        <a class="boton" href="#" id="boton"> Musical </a>
-        <a class="boton" href="#" id="boton"> Bélicas </a>
-        <a class="boton" href="#" id="boton"> Aventuras </a>
-      </div>
+        <a class="boton" href="#" id="boton"> Terror </a>
+        <a class="boton" href="#" id="boton"> Comedia </a>
+        <a class="boton" href="#" id="boton"> Romantico </a>
+        <a class="boton" href="#" id="boton"> Suspenso </a>
+        <a class="boton" href="#" id="boton"> Policial </a>
+        <div class="contenedor-botones2">
+            <a class="boton" href="#" id="boton"> Acción </a>
+            <a class="boton" href="#" id="boton"> Ficción </a>
+            <a class="boton" href="#" id="boton"> Musical </a>
+            <a class="boton" href="#" id="boton"> Bélicas </a>
+            <a class="boton" href="#" id="boton"> Aventuras </a>
+        </div>
     </div>
-  </article>
+</article>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+<!-- FOOTER -->
+<footer class="footer">
     <p>BoxReview © 2022</p>
-  </footer>
+</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
