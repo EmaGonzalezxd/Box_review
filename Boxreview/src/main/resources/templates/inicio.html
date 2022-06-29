@@ -27,9 +27,13 @@
     <meta name="theme-color" content="#712cf9">
 
 </head>
-
+<body> 
     
-    
+<div class="alert alert-success alert-dismissible sticky-top"  role="alert" th:if="${error == null}">
+        <p class="h3" th:text="${titulo}" style="color: #000"></p>
+        <p class="h5" th:text="${descripcion}" style="color: #000"></p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>  
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
         <div class="avatar">
@@ -44,7 +48,7 @@
                 type="button">Registrarse</button>
         </form>
 
-
+    
 
         <div>
 
@@ -52,7 +56,7 @@
 
             <!-- MODAL INICIO DE SESION-->
 
-            <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel"
+          <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div id="modal-content">
@@ -60,15 +64,15 @@
                             <h1>Inicio de sesion</h1>
                         </div>
                         <div id="modal-body">
-                            <form action="/logincheck" method="POST">
+                           <form action="/logincheck" method="POST">
                                 <label for="email">Correo Electronico</label>
                                 <input required id="email" name="email" type="text" placeholder="email">
                                 <label for="contrasenia">clave</label>
                                 <input required id="contrasenia" name="contrasenia" type="password"
                                     placeholder="contrasenia">
                                 <input required type="submit" value="Ingresar">
-                            </form>
-                        </div>
+                            </form>                       
+        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
@@ -76,6 +80,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- MODAL REGISTRO-->
 
@@ -86,6 +91,11 @@
                         <div id="modal-header">
                             <h1>Registrarse</h1>
                         </div>
+                        
+                        <div class="alert alert-danger" role="alert" th:if="${error != null}">
+                            <p class="h5 fw-normal"  th:text="${error}" style="color: #000000"></p>
+                        </div>
+                        
                         <div id="modal-body">
                             <form action="/registrar" method="POST" enctype="multipart/form-data">
                                 <label for="nombre">Nombre</label>
@@ -192,7 +202,6 @@
         </div>
 </header>
 
-<body>
 
 
 
