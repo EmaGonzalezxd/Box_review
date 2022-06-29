@@ -2,6 +2,7 @@ package com.Boxreview.demo.entidades;
 
 
 import com.Boxreview.demo.enumerations.EnumRol;
+import javax.persistence.Column;
 
 
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Usuario {
     private String id;
     private String nombre;
     private String apellido;
+    @Column(unique=true)
     private String email;
     private String contrasenia;
     private Boolean alta;

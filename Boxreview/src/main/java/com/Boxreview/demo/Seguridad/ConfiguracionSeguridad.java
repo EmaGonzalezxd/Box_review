@@ -31,18 +31,19 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //.antMatchers("/admin/*").hasRole("ADMINISTRADOR") // Puedo dar acceso a un controlador completo, con rol especifoc
                 .antMatchers("/css/*", "/js/*", "/img/*",
-                        "/**").permitAll()
+                        "/**","/inicio").permitAll()
+                .antMatchers("/index").hasRole("USUARIO")
                 .and().
                 formLogin()
-                .loginPage("/index")
+                .loginPage("/")
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email")
                 .passwordParameter("contrasenia")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/index")
                 .permitAll()
                 .and().logout()
-                .logoutUrl("/index")
-                .logoutSuccessUrl("/login")
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
                 .permitAll().
                 and().csrf().disable();
     }
