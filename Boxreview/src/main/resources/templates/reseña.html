@@ -68,9 +68,13 @@
     <div  class="post-container">
       <div class="post-row">
         <div class="user-profile">
-          <img src="imagenes/FotodePerfil.jpeg">
+          <!--FOTO DE PERFIL-->
+            <div th:if="${session.usuariosession} != null">
+              <img style="width: 20%;" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
+          </div>
+            <!---  ...  --->
           <div>
-            <p th:text="${session.usersession.nombre}">Leo Messi</p>
+            <p th:text="${session.usuariosession.nombre}"></p>
           </div>
         </div>
         <div class="ingresar-reseña">
@@ -112,7 +116,7 @@
         <div class="user-profile">
           <img src="imagenes/FotodePerfil.jpeg">
           <div>
-            <p th:text="${usuario.nombre}">Leo Messi</p>
+            <p th:text="${usuario.nombre}"></p>
           </div>
         </div>
         <a href="#"><img src="imagenes/mas.png"></a>
