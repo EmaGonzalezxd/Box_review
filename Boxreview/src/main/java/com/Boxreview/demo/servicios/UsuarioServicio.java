@@ -27,13 +27,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class UsuarioServicio implements UserDetailsService {
 
-
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
     private FotoServicio fotoServicio;
-    
+
     @Autowired
     private NotificacionServicio notificacionServicio;
 
@@ -42,28 +41,39 @@ public class UsuarioServicio implements UserDetailsService {
 
         validar(nombre, apellido, email, contrasenia);
 
-        
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
         usuario.setAlta(Boolean.TRUE);
         usuario.setRol(EnumRol.USUARIO);
-        
+
         String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
         usuario.setContrasenia(contraEncriptada);
-        
+
         Foto foto = fotoServicio.guardar(archivo);
         usuario.setFoto(foto);
 
         usuarioRepositorio.save(usuario);
-        
-//        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
-//        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
+
+        notificacionServicio.enviar("Bienvenido a BoxReview", "Te has registrado con éxito a BoxReview!!", usuario.getEmail());
     }
 
     @Transactional
-    public void modificarNombre(MultipartFile archivo, String nombre, String id) throws ErrorServicio, Exception {
+    public Usuario buscarPorId(String id) throws ErrorServicio {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            return usuario;
+        } else {
+            throw new ErrorServicio("No se encontro el usuario deseado");
+        }
+    }
+
+    @Transactional
+    public void modificarNombre(MultipartFile archivo, String nombre,
+             String id) throws ErrorServicio, Exception {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre no puede ser nulo");
@@ -117,27 +127,25 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
-        
+
         if (usuario != null) {
             List<GrantedAuthority> permisos = new ArrayList<>();
-            
-            GrantedAuthority p1  = new SimpleGrantedAuthority("ROLE_"+ usuario.getRol());
+
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + usuario.getRol());
             permisos.add(p1);
-            
+
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("usuariosession", usuario);
-            
+
             User user = new User(usuario.getEmail(), usuario.getContrasenia(), permisos);
             return user;
         } else {
             throw new UsernameNotFoundException("algo no andaa");
         }
     }
-
 
 }
