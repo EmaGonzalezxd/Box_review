@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: #003049 !important;
+}
+
+.form{
+    margin: auto;
+}
