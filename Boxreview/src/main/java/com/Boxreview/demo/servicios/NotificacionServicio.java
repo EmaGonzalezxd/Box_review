@@ -17,7 +17,7 @@ public class NotificacionServicio {
         SimpleMailMessage mensaje = new SimpleMailMessage();
 
         mensaje.setTo(mail);
-        mensaje.setFrom("noreply@boxreview.com");
+        mensaje.setFrom("BoxReview@noreply");
         mensaje.setSubject(titulo);
         mensaje.setText(cuerpo);
         
