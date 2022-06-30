@@ -18,21 +18,31 @@
     
     <div class="navbar">
         <div class="navbar-container">
+            
+            
             <div class="logo-container">
                 <img class="logo" src="Logo_box_review.png" height="80" width="">
             </div>
 
+            
             <div class="profile-container">
+                
                 <div class="container-fluid">
                     <form class="d-flex" role="search">
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-light" type="submit">Search</button>
                     </form>
-                  </div>
-                <div class="profile-text-container">
-                 <a href="/logout"><button type="button" class="btn btn-danger">Cerrar sesion</button></a> 
+                    
                 </div>
-
+                
+                <div class="profile-text-container">
+                    <a href="/logout"><button type="button" class="btn btn-danger">Cerrar sesion</button></a> 
+                    
+                 <!--<a href="/editarPerfil"><button type="button" class="btn btn-danger">Editar Perfil</button></a>--> 
+                </div>
+                <div class="logo-container ">
+                <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
+                </div>
             </div>
         </div>
     </div>
