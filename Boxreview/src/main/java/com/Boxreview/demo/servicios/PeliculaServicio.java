@@ -19,15 +19,15 @@ public class PeliculaServicio {
     private FotoServicio fotoServicio;
 
     @Transactional
-    public void crear(MultipartFile archivo, String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
+    public void crear(MultipartFile archivo, String titulo, String genero, String director, Integer duracion, String anio) throws Exception {
 
-        validar(titulo, genero, director, duracion, año);
+        validar(titulo, genero, director, duracion, anio);
 
         Pelicula pelicula = new Pelicula();
         pelicula.setTitulo(titulo);
         pelicula.setGenero(genero);
         pelicula.setDirector(director);
-        pelicula.setAño(año);
+        pelicula.setAnio(anio);
         pelicula.setDuracion(duracion);
 
         Foto foto = fotoServicio.guardar(archivo);
@@ -37,9 +37,9 @@ public class PeliculaServicio {
     }
 
     @Transactional
-    public void modificar(MultipartFile archivo, String id, String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
+    public void modificar(MultipartFile archivo, String id, String titulo, String genero, String director, Integer duracion, String anio) throws Exception {
 
-        validar(titulo, genero, director, duracion, año);
+        validar(titulo, genero, director, duracion, anio);
 
         Optional<Pelicula> respuesta = peliculaRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -47,7 +47,7 @@ public class PeliculaServicio {
             pelicula.setTitulo(titulo);
             pelicula.setGenero(genero);
             pelicula.setDirector(director);
-            pelicula.setAño(año);
+            pelicula.setAnio(anio);
             pelicula.setDuracion(duracion);
 
             String idFoto = null;
@@ -64,7 +64,7 @@ public class PeliculaServicio {
         }
     }
 
-    public void validar(String titulo, String genero, String director, Integer duracion, Integer año) throws Exception {
+    public void validar(String titulo, String genero, String director, Integer duracion, String anio) throws Exception {
 
         if (titulo == null || titulo.isEmpty()) {
             throw new Exception("Coloque el titulo de la pelicula");
@@ -75,7 +75,7 @@ public class PeliculaServicio {
         if (director == null || director.isEmpty()) {
             throw new Exception("Coloque el director de la pelicula");
         }
-        if (año == null || director.isEmpty()) {
+        if (anio == null || director.isEmpty()) {
             throw new Exception("Coloque el año de la pelicula");
         }
         if (duracion == null || director.isEmpty()) {
