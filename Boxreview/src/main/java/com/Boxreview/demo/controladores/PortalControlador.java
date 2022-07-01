@@ -1,5 +1,6 @@
 package com.Boxreview.demo.controladores;
 
+import com.Boxreview.demo.enumerations.Generos;
 import com.Boxreview.demo.servicios.PeliculaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,15 +64,18 @@ public class PortalControlador {
     }
     
     @GetMapping("/agregarPeli")
-    public String agregarPeli() {
+    public String agregarPeli(ModelMap modelo) {
+        modelo.put("generos", Generos.values());
         return "agregarPeli.html";
+        
     }
     
     @PostMapping("/crearPeli")
-    public String crearPeli(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
+    public String crearPeli(ModelMap modelo, ModelMap modelo2, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
 
         try {
 
+            
             peliculaServicio.crear(foto, titulo, genero, director, duracion, anio);
 
             modelo.put("titulo", "Felicidades!");
