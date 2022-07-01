@@ -3,6 +3,7 @@ package com.Boxreview.demo.servicios;
 import com.Boxreview.demo.entidades.Foto;
 import com.Boxreview.demo.entidades.Pelicula;
 import com.Boxreview.demo.repositorios.PeliculaRepositorio;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,5 +82,10 @@ public class PeliculaServicio {
         if (duracion == null || director.isEmpty()) {
             throw new Exception("Coloque la duracion de la pelicula");
         }
+    }
+    
+    @Transactional
+    public List<Pelicula> mostrarTodos(){
+        return peliculaRepositorio.findAll();
     }
 }

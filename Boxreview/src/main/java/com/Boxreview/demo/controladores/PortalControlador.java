@@ -1,7 +1,13 @@
 package com.Boxreview.demo.controladores;
 
+import com.Boxreview.demo.entidades.Pelicula;
+import com.Boxreview.demo.entidades.Usuario;
+import com.Boxreview.demo.enumerations.EnumCalificacion;
 import com.Boxreview.demo.servicios.PeliculaServicio;
+import com.Boxreview.demo.servicios.ResenaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("")
 public class PortalControlador {
+    
+    @Autowired
+    private ResenaServicio resenaServicio;
     
     @Autowired
     private UsuarioServicio usuarioServicio;
@@ -60,6 +69,33 @@ public class PortalControlador {
             return "inicio.html";
         }
 
+    }
+    
+    @GetMapping("/resenar")
+    public String resenaformulario(ModelMap modelo) {
+        List<Pelicula>peliculas = peliculaServicio.mostrarTodos();
+        System.out.println(peliculas);
+        modelo.addAttribute("pelicula",peliculas);
+//        modelo.addAttribute("calificacion",EnumCalificacion.values());
+        return "reseña.html";
+    }
+    
+    @PostMapping("/resenar")
+    public String resenar(ModelMap modelo,HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
+          @RequestParam EnumCalificacion calificacion,@RequestParam Pelicula pelicula){
+        try {
+//            Usuario usuario = usuarioServicio.buscarPorId(session.getId());
+System.out.println(pelicula);
+            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+            resenaServicio.crear(titulo, comentario, calificacion, usuario, pelicula);
+            modelo.put("titulo", "Felicidades!");
+            modelo.put("descripcion", "Persistida la reseña con exito.");
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+            modelo.put("error", ex.getMessage());
+            ex.printStackTrace();
+        }
+        return "reseña.html";
     }
     
     @GetMapping("/agregarPeli")

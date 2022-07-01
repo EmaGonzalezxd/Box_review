@@ -19,16 +19,16 @@ public class ResenaServicio {
     
     @Transactional
     public void crear(String titulo, String comentario,
-            EnumCalificacion Calificacion, Usuario usuario, Pelicula pelicula) throws ErrorServicio {
+            EnumCalificacion calificacion, Usuario usuario, Pelicula pelicula) throws ErrorServicio {
         
-        validar(titulo, comentario, Calificacion, usuario, pelicula);
+        validar(titulo, comentario, calificacion, usuario, pelicula);
         
         Resena resena = new Resena();
         resena.setUsuario(usuario);
         resena.setPelicula(pelicula);
         resena.setTitulo(titulo);
         resena.setComentario(comentario);
-        resena.setCalificacion(Calificacion);
+        resena.setCalificacion(calificacion);
         
         resenaRepositorio.save(resena);
     }
