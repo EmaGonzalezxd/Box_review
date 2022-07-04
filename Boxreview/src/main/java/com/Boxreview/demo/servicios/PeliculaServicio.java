@@ -3,6 +3,7 @@ package com.Boxreview.demo.servicios;
 import com.Boxreview.demo.entidades.Foto;
 import com.Boxreview.demo.entidades.Pelicula;
 import com.Boxreview.demo.repositorios.PeliculaRepositorio;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,4 +83,22 @@ public class PeliculaServicio {
             throw new Exception("Coloque la duracion de la pelicula");
         }
     }
+    
+    @Transactional
+    public List<Pelicula> mostrarTodos(){
+        return peliculaRepositorio.findAll();
+    }
+    
+    @Transactional
+    public List<Pelicula> buscarPeli(String titulo) throws Exception {
+
+        try {
+            List<Pelicula> peliculas = peliculaRepositorio.buscarPorTitulo(titulo);
+            return peliculas;
+        } catch (Exception e) {
+            throw new Exception("Esta pelicula no existe");
+        }
+
+    }
+
 }
