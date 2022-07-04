@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("")
 public class PortalControlador {
-    
+
     @Autowired
     private ResenaServicio resenaServicio;
     
@@ -34,7 +34,7 @@ public class PortalControlador {
     public String inicio() {
         return "inicio.html";
     }
-    
+
     @GetMapping("/index")
     public String index() {
         return "index.html";
@@ -124,4 +124,28 @@ System.out.println(pelicula);
 
     }
     
+     @GetMapping("/reseña")
+    public String resena() {
+        return "reseña.html";
+    }
+
+    @PostMapping("/resenar")
+    public String resenar(ModelMap modelo, @RequestParam String titulo, @RequestParam String comentario, @RequestParam EnumCalificacion Calificacion, @RequestParam Usuario usuario, @RequestParam Pelicula pelicula) {
+
+        try {
+
+            resenaServicio.crear(titulo, comentario, Calificacion, usuario, pelicula);
+
+//            modelo.put("titulo", "Felicidades!");
+//            modelo.put("descripcion", "Reseña subida satisfactoriamente.");
+
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            modelo.put("error", ex.getMessage());
+        }
+        return "reseña.html";
+    }
+
 }
