@@ -41,9 +41,18 @@ public class PortalControlador {
         return "index.html";
     }
     
-    @GetMapping("/login")
-    public String login() {
-        return "login.html";
+    @GetMapping("/buscador")
+    public String buscador(ModelMap model, @RequestParam String titulo){
+        try {
+            List<Pelicula> peliculas=peliculaServicio.buscarPeli(titulo);
+            return "reseña.html";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.put("error", e.getMessage());
+            return "index.html";
+        }
+        
+
     }
     
     @GetMapping("/resena")
@@ -127,29 +136,7 @@ System.out.println(pelicula);
         }
 
     }
-    
-     @GetMapping("/reseña")
-    public String resena() {
-        return "reseña.html";
-    }
 
-    @PostMapping("/resenar")
-    public String resenar(ModelMap modelo, @RequestParam String titulo, @RequestParam String comentario, @RequestParam EnumCalificacion Calificacion, @RequestParam Usuario usuario, @RequestParam Pelicula pelicula) {
-
-        try {
-
-            resenaServicio.crear(titulo, comentario, Calificacion, usuario, pelicula);
-
-//            modelo.put("titulo", "Felicidades!");
-//            modelo.put("descripcion", "Reseña subida satisfactoriamente.");
-
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
-            modelo.put("error", ex.getMessage());
-        }
-        return "reseña.html";
-    }
+  
 
 }
