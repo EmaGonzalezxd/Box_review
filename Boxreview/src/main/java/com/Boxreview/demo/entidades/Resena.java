@@ -19,7 +19,7 @@ public class Resena {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id; 
     
-    private String titulo; 
+    private String titulo;
 
     private String comentario; 
 
