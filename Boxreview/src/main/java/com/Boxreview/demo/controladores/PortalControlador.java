@@ -3,6 +3,7 @@ package com.Boxreview.demo.controladores;
 import com.Boxreview.demo.entidades.Pelicula;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.enumerations.EnumCalificacion;
+import com.Boxreview.demo.enumerations.Generos;
 import com.Boxreview.demo.servicios.PeliculaServicio;
 import com.Boxreview.demo.servicios.ResenaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
@@ -99,15 +100,18 @@ System.out.println(pelicula);
     }
     
     @GetMapping("/agregarPeli")
-    public String agregarPeli() {
+    public String agregarPeli(ModelMap modelo) {
+        modelo.put("generos", Generos.values());
         return "agregarPeli.html";
+        
     }
     
     @PostMapping("/crearPeli")
-    public String crearPeli(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
+    public String crearPeli(ModelMap modelo, ModelMap modelo2, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
 
         try {
 
+            
             peliculaServicio.crear(foto, titulo, genero, director, duracion, anio);
 
             modelo.put("titulo", "Felicidades!");
@@ -124,4 +128,17 @@ System.out.println(pelicula);
 
     }
     
+    @GetMapping("/buscador")
+    public String buscador(ModelMap model, @RequestParam String titulo){
+        try {
+            List<Pelicula> peliculas=peliculaServicio.buscarPeli(titulo);
+            return "reseña.html";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.put("error", e.getMessage());
+            return "index.html";
+        }
+        
+
+    }
 }
