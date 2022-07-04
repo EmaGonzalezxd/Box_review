@@ -1,5 +1,7 @@
 package com.Boxreview.demo.controladores;
 
+import com.Boxreview.demo.enumerations.Generos;
+import com.Boxreview.demo.servicios.PeliculaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    @Autowired
+    private PeliculaServicio peliculaServicio;
+    
     @GetMapping("/")
     public String inicio() {
         return "inicio.html";
@@ -37,7 +42,6 @@ public class PortalControlador {
         return "reseña.html";
     }
 
-
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
 
@@ -55,6 +59,35 @@ public class PortalControlador {
             ex.printStackTrace();
             modelo.put("error", ex.getMessage());
             return "inicio.html";
+        }
+
+    }
+    
+    @GetMapping("/agregarPeli")
+    public String agregarPeli(ModelMap modelo) {
+        modelo.put("generos", Generos.values());
+        return "agregarPeli.html";
+        
+    }
+    
+    @PostMapping("/crearPeli")
+    public String crearPeli(ModelMap modelo, ModelMap modelo2, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
+
+        try {
+
+            
+            peliculaServicio.crear(foto, titulo, genero, director, duracion, anio);
+
+            modelo.put("titulo", "Felicidades!");
+            modelo.put("descripcion", "Persistida la pelicula con exito.");
+
+            return "agregarPeli.html";
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+            modelo.put("error", ex.getMessage());
+            return "agregarPeli.html";
         }
 
     }

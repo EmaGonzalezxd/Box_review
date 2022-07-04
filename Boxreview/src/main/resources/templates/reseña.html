@@ -69,11 +69,11 @@
         <div class="user-profile">
           <!--FOTO DE PERFIL-->
             <div th:if="${session.usuariosession} != null">
-              <img style="width: 20%;" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
+              <img style="width: 10%;" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
           </div>
             <!---  ...  --->
           <div>
-            <p th:text="${session.usuariosession.nombre}"></p>
+            <p th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></p>
           </div>
         </div>
         <div class="ingresar-reseña">

@@ -20,7 +20,7 @@ public class Pelicula {
     private String genero;
     private String director;
     private Integer duracion;
-    private Integer año;
+    private String anio;
     private String promedio;
     
     @OneToMany
