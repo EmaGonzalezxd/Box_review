@@ -65,8 +65,8 @@
                 <div class="movie-list-container">
                     <h1 class="movie-list-title">TITULO....</h1>
                     <div class="movie-list-wrapper">
-                        <div class="movie-list" th:each="peli : ${peliculas}">
-                            <div class="movie-list-item">
+                        <div class="movie-list" >
+                            <div class="movie-list-item" th:each="peli : ${peliculas}">
                                 <img class="movie-list-item-img" th:src="${'/foto/pelicula/' + peli.id}" alt="">
                                 <span class="movie-list-item-title" th:text="${peli.titulo}"  ></span>
                                 <p class="movie-list-item-desc" th:text="${peli.genero}" ></p>
