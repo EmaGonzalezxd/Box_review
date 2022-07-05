@@ -11,13 +11,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PeliculaRepositorio extends JpaRepository<Pelicula, String>{
     
-    @Query("SELECT c FROM Pelicula c WHERE c.titulo LIKE %:titulo%")
-    public List<Pelicula> buscarPorTitulo(@Param("titulo") String titulo);
-    
     @Query("SELECT c FROM Pelicula c WHERE c.genero = :genero")
     public Pelicula buscarPorGenero(@Param("genero") String genero);
     
+    @Query("SELECT c FROM Pelicula c WHERE c.titulo LIKE %:titulo%")
+    public List<Pelicula> buscarPorTitulo(@Param("titulo") String titulo);
     
+
     
     
     

@@ -34,6 +34,7 @@
                     </form>
                     
                 </div>
+
                 
                 <div class="profile-text-container">
                     <a href="/logout"><button type="button" class="btn btn-danger">Cerrar sesion</button></a> 
@@ -42,7 +43,11 @@
                 </div>
                 <div class="logo-container ">
                 <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
+                  </div>
+                <div class="profile-text-container">
+                 <a href=""><button type="button" class="btn btn-danger">Cerrar sesion</button></a> 
                 </div>
+
             </div>
         </div>
     </div>
@@ -193,6 +198,196 @@
             </div>
         </div>
     </div>
+   <div class="container">
+        <div class="content-container">
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">TITULO....</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/1917.jpg" alt="">
+                            <span class="movie-list-item-title">1917</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://elcritico.com.ar/wp-content/uploads/2022/05/top_gun_maverick.jpg" alt="">
+                            <span class="movie-list-item-title">Too Gun</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/aquaman.jpg" alt="">
+                            <span class="movie-list-item-title">Aquaman</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/avengers.jpg" alt="">
+                            <span class="movie-list-item-title">The avengers</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
+                        </div>
+                       
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/iroman.jpg');">
+        
+            </div>
+            <div class="movie-list-container">
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/batman_elcaballerodela_noche.jpg" alt="">
+                            <span class="movie-list-item-title">Batman el caballero de la noche</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/hobbit.jpg" alt="">
+                            <span class="movie-list-item-title">Hobbit</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/Jurasik_world.jpg" alt="">
+                            <span class="movie-list-item-title">Jurasik world</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/img_star_wars.jpg" alt="">
+                            <span class="movie-list-item-title">Star Wars</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                      
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">TITULO......</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/iroman.jpg" alt="">
+                            <span class="movie-list-item-title">Iroman</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/kiss-as.jpg" alt="">
+                            <span class="movie-list-item-title">kiss-as</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/oblivion.jpg" alt="">
+                            <span class="movie-list-item-title">Oblivon</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/spiderman_no_way_home.jpg" alt="">
+                            <span class="movie-list-item-title">Spiderman no way home</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">descripcion de pelicula</p>
+                            <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+     <main class="destacada">
+        <h2>Peli destacada</h2>
+        <a href="#"> <img class="img-destacada"
+                src="http://www.trece.com.py/uploads/swp/gfftv8/media/607739c3a97ed87e3d1743f2.jpeg"
+                alt="Pelicula destacada"></a>
+        <p class="resumen-destacada">Director: Justin Lin. <br><br>
+
+            Productores: Vin Diesel, Justin Lin, Samantha Vincent, Neal H. Moritz, Jeff Kirschenbaum, Clayton Townsend,
+            Joe
+            Roth. <br><br>
+
+            Productoras: Universal Studios, One Race Films. <br><br>
+
+            Dom Toretto vive una vida tranquila junto a Letty y su hijo,
+            pero el peligro siempre regresa a su vida. En esta ocasión,
+            el equipo se enfrenta a un complot mundial orquestado por el
+            asesino más temible del mundo: el hermano de Dom.</p>
+    </main>
+
+<!-- CONTENEDOR DE PELICULAS(API) -->
+
+    <div class="contenedor" id="contenedor"></div>
+    
+ 
+    <!-- GENEROS -->
+    
+    <h2 class="h2-generos">Generos</h2>
+    <article class="generos">
+        <div class="contenedor-botones">
+            <a class="boton" href="#" id="boton"> Terror </a>
+            <a class="boton" href="#" id="boton"> Comedia </a>
+            <a class="boton" href="#" id="boton"> Romantico </a>
+            <a class="boton" href="#" id="boton"> Suspenso </a>
+            <a class="boton" href="#" id="boton"> Policial </a>
+            <div class="contenedor-botones2">
+                <a class="boton" href="#" id="boton"> Acción </a>
+                <a class="boton" href="#" id="boton"> Ficción </a>
+                <a class="boton" href="#" id="boton"> Musical </a>
+                <a class="boton" href="#" id="boton"> Bélicas </a>
+                <a class="boton" href="#" id="boton"> Aventuras </a>
+            </div>
+        </div>
       
      <main class="destacada">
         <h2>Peli destacada</h2>

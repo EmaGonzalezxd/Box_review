@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("")
 public class PortalControlador {
-    
+
     @Autowired
     private ResenaServicio resenaServicio;
     
@@ -35,15 +35,24 @@ public class PortalControlador {
     public String inicio() {
         return "inicio.html";
     }
-    
+
     @GetMapping("/index")
     public String index() {
         return "index.html";
     }
     
-    @GetMapping("/login")
-    public String login() {
-        return "login.html";
+    @GetMapping("/buscador")
+    public String buscador(ModelMap model, @RequestParam String titulo){
+        try {
+            List<Pelicula> peliculas=peliculaServicio.buscarPeli(titulo);
+            return "reseña.html";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.put("error", e.getMessage());
+            return "index.html";
+        }
+        
+
     }
     
     @GetMapping("/resena")
@@ -127,18 +136,5 @@ System.out.println(pelicula);
         }
 
     }
-    
-    @GetMapping("/buscador")
-    public String buscador(ModelMap model, @RequestParam String titulo){
-        try {
-            List<Pelicula> peliculas=peliculaServicio.buscarPeli(titulo);
-            return "reseña.html";
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.put("error", e.getMessage());
-            return "index.html";
-        }
-        
 
-    }
 }
