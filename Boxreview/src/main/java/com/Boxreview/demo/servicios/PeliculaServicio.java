@@ -1,5 +1,6 @@
 package com.Boxreview.demo.servicios;
 
+import com.Boxreview.demo.ErrorServicio.ErrorServicio;
 import com.Boxreview.demo.entidades.Foto;
 import com.Boxreview.demo.entidades.Pelicula;
 import com.Boxreview.demo.repositorios.PeliculaRepositorio;
@@ -37,6 +38,18 @@ public class PeliculaServicio {
         peliculaRepositorio.save(pelicula);
     }
 
+    @Transactional
+    public Pelicula buscarPorId(String id) throws ErrorServicio {
+        Optional<Pelicula> respuesta = peliculaRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Pelicula pelicula = respuesta.get();
+            return pelicula;
+        } else {
+            throw new ErrorServicio("No se encontro la pelicula deseado");
+        }
+    }
+    
     @Transactional
     public void modificar(MultipartFile archivo, String id, String titulo, String genero, String director, Integer duracion, String anio) throws Exception {
 
