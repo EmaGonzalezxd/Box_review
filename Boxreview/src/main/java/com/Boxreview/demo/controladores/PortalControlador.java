@@ -1,6 +1,7 @@
 package com.Boxreview.demo.controladores;
 
 import com.Boxreview.demo.entidades.Pelicula;
+import com.Boxreview.demo.entidades.Resena;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.enumerations.EnumCalificacion;
 import com.Boxreview.demo.enumerations.Generos;
@@ -56,7 +57,8 @@ public class PortalControlador {
     }
     
     @GetMapping("/resena")
-    public String resena() {
+    public String resena(ModelMap modelo) {
+        
         return "reseña.html";
     }
 
@@ -135,6 +137,17 @@ System.out.println(pelicula);
             return "agregarPeli.html";
         }
 
+    }
+    
+    @GetMapping("/misResenas")
+    public String misResenas(HttpSession session, ModelMap modelo) {
+        Usuario login = (Usuario)session.getAttribute("usuariosession");
+        if (login==null) {
+            return "inicio.html";
+        }
+        List<Resena> resenas =  resenaServicio.buscarResenaPorUsuario(login.getId());
+        modelo.put("resenas", resenas);
+        return "misResenas.html";
     }
 
   

@@ -6,6 +6,7 @@ import com.Boxreview.demo.entidades.Pelicula;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.entidades.Resena;
 import com.Boxreview.demo.repositorios.ResenaRepositorio;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,10 @@ public class ResenaServicio {
         if (pelicula == null) {
             throw new ErrorServicio("La pelicula no puede ser nulo");
         }
+    }
+    
+    public List<Resena> buscarResenaPorUsuario(String id){
+        return resenaRepositorio.buscarResenaPorId(id);
     }
     
 }
