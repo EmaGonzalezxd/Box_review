@@ -46,10 +46,19 @@ public class PortalControlador {
         modelo.put("peliculas", peliculas);
         return "index.html";
     }
+    
+    @GetMapping("/buscador")
+    public String buscador(ModelMap model, @RequestParam String titulo){
+        try {
+            List<Pelicula> peliculas=peliculaServicio.buscarPeli(titulo);
+            return "reseña.html";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.put("error", e.getMessage());
+            return "index.html";
+        }
+        
 
-    @GetMapping("/login")
-    public String login() {
-        return "login.html";
     }
 
 //    @GetMapping("/resena")

@@ -101,4 +101,17 @@ public class PeliculaServicio {
     public List<Pelicula> mostrarTodos(){
         return peliculaRepositorio.findAll();
     }
+    
+    @Transactional
+    public List<Pelicula> buscarPeli(String titulo) throws Exception {
+
+        try {
+            List<Pelicula> peliculas = peliculaRepositorio.buscarPorTitulo(titulo);
+            return peliculas;
+        } catch (Exception e) {
+            throw new Exception("Esta pelicula no existe");
+        }
+
+    }
+
 }
