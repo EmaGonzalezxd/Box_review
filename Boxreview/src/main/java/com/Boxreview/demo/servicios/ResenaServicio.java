@@ -85,4 +85,8 @@ public class ResenaServicio {
         return resenaRepositorio.buscarResenaPorId(id);
     }
     
+    @Transactional
+    public List<Resena> mostrarTodos(){
+        return resenaRepositorio.findAll();
+    }
 }
