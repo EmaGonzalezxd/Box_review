@@ -60,11 +60,7 @@ public class PortalControlador {
         
 
     }
-
-//    @GetMapping("/resena")
-//    public String resena() {
-//        return "reseña.html";
-//    }
+    
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
@@ -146,4 +142,18 @@ public class PortalControlador {
         }
 
     }
+    
+    @GetMapping("/misResenas")
+    public String misResenas(HttpSession session, ModelMap modelo) {
+        Usuario login = (Usuario)session.getAttribute("usuariosession");
+        if (login==null) {
+            return "inicio.html";
+        }
+        List<Resena> resenas =  resenaServicio.buscarResenaPorUsuario(login.getId());
+        modelo.put("resenas", resenas);
+        return "misResenas.html";
+    }
+
+  
+
 }

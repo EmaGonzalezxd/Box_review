@@ -81,6 +81,10 @@ public class ResenaServicio {
         }
     }
     
+    public List<Resena> buscarResenaPorUsuario(String id){
+        return resenaRepositorio.buscarResenaPorId(id);
+    }
+    
     @Transactional
     public List<Resena> mostrarTodos(){
         return resenaRepositorio.findAll();
