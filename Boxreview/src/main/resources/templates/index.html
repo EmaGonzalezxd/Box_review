@@ -68,12 +68,12 @@
                 <div class="movie-list-container">
                     <h1 class="movie-list-title">TITULO....</h1>
                     <div class="movie-list-wrapper">
-                        <div class="movie-list">
+                        <div class="movie-list" th:each="peli : ${peliculas}">
                             <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1917.jpg" alt="">
-                                <span class="movie-list-item-title">1917</span>
-                                <p class="movie-list-item-desc">descripcion de pelicula</p>
-                                <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                                <img class="movie-list-item-img" th:src="${'/foto/pelicula/' + peli.id}" alt="">
+                                <span class="movie-list-item-title" th:text="${peli.titulo}"  ></span>
+                                <p class="movie-list-item-desc" th:text="${peli.genero}" ></p>
+                                <a th:href="${'/resena/' + peli.id}"><button class="movie-list-item-button">Reseñar</button></a>
                             </div>
                             <div class="movie-list-item">
                                 <img class="movie-list-item-img"
