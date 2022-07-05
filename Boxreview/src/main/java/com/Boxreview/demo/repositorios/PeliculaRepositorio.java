@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PeliculaRepositorio extends JpaRepository<Pelicula, String>{    
+public interface PeliculaRepositorio extends JpaRepository<Pelicula, String>{
     
     @Query("SELECT c FROM Pelicula c WHERE c.genero = :genero")
     public Pelicula buscarPorGenero(@Param("genero") String genero);
