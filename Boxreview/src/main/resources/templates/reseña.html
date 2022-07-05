@@ -94,7 +94,7 @@
                             <select class="form-control" name="pelicula" required>
                                 <option selected value="Elija una pelicula"></option>
 
-                                <option th:each="peli : ${pelicula}" th:value="${peli.id}" th:text="${peli.getTitulo()}"></option>
+                                <option th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}"></option>
                             </select> 
                             <p class="clasificacion" required>
                                 <input class="input-reseña" id="radio1" type="radio" name="calificacion" value="Cinco">
