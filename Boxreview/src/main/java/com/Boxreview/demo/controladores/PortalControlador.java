@@ -99,7 +99,7 @@ public class PortalControlador {
 
     @PostMapping("/resenar")
     public String resenar(ModelMap modelo, HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
+            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula ) {
         try {
 //            Usuario usuario = usuarioServicio.buscarPorId(session.getId());
             System.out.println(pelicula);
@@ -107,12 +107,13 @@ public class PortalControlador {
             resenaServicio.crear(titulo, comentario, calificacion, usuario, pelicula);
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Persistida la reseña con exito.");
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             modelo.put("error", ex.getMessage());
             ex.printStackTrace();
         }
-        return "reseña.html";
+        return ("/reseña.html") ;
     }
 
     
