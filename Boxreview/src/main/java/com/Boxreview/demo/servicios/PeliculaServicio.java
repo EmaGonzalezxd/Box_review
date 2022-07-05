@@ -77,7 +77,7 @@ public class PeliculaServicio {
             throw new Exception("No se encontro la pelicula");
         }
     }
-
+    
     public void validar(String titulo, String genero, String director, Integer duracion, String anio) throws Exception {
 
         if (titulo == null || titulo.isEmpty()) {
@@ -96,9 +96,9 @@ public class PeliculaServicio {
             throw new Exception("Coloque la duracion de la pelicula");
         }
     }
-    
+
     @Transactional
-    public List<Pelicula> mostrarTodos(){
+    public List<Pelicula> mostrarTodos() {
         return peliculaRepositorio.findAll();
     }
     

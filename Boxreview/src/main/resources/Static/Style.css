@@ -293,7 +293,7 @@
     margin-left: 950;
     position: absolute;
     top: 25;
-    margin-left: 1050px;
+    margin-left: 900px;
 }
 
 
@@ -634,4 +634,23 @@ p.clasificacion input:checked~label {
 
 }
 
+.logo-container .logo {
+    margin-left: 585;
+}
+.logo-container {
+    flex: 1;
+    margin-left: 150;
+}
 
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: initial !important;
+    margin-top: 0.125rem;
+}
+
+.profile-text-container {
+    margin: -10px;
+}
+.dropdown-toggle {
+    white-space: pre-wrap !important;
+}
