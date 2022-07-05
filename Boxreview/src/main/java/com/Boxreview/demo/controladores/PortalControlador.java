@@ -1,6 +1,8 @@
 package com.Boxreview.demo.controladores;
 
+import com.Boxreview.demo.ErrorServicio.ErrorServicio;
 import com.Boxreview.demo.entidades.Pelicula;
+import com.Boxreview.demo.entidades.Resena;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.enumerations.EnumCalificacion;
 import com.Boxreview.demo.enumerations.Generos;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,20 +27,23 @@ public class PortalControlador {
 
     @Autowired
     private ResenaServicio resenaServicio;
-    
+
     @Autowired
     private UsuarioServicio usuarioServicio;
 
     @Autowired
     private PeliculaServicio peliculaServicio;
-    
+
     @GetMapping("/")
     public String inicio() {
         return "inicio.html";
     }
 
     @GetMapping("/index")
-    public String index() {
+    public String index(ModelMap modelo) {
+        List<Pelicula> peliculas = peliculaServicio.mostrarTodos();
+        System.out.println(peliculas);
+        modelo.put("peliculas", peliculas);
         return "index.html";
     }
     
@@ -55,10 +61,6 @@ public class PortalControlador {
 
     }
     
-    @GetMapping("/resena")
-    public String resena() {
-        return "reseña.html";
-    }
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
@@ -80,47 +82,51 @@ public class PortalControlador {
         }
 
     }
-    
-    @GetMapping("/resenar")
-    public String resenaformulario(ModelMap modelo) {
-        List<Pelicula>peliculas = peliculaServicio.mostrarTodos();
-        System.out.println(peliculas);
-        modelo.addAttribute("pelicula",peliculas);
+
+    @GetMapping("/resena/{id}")
+    public String resena(ModelMap modelo, @PathVariable String id ) throws ErrorServicio {
+        Pelicula pelicula = peliculaServicio.buscarPorId(id);
+        List<Resena> resenas = resenaServicio.mostrarTodos();
+        modelo.addAttribute("resenas", resenas);
+        modelo.addAttribute("pelicula", pelicula);
 //        modelo.addAttribute("calificacion",EnumCalificacion.values());
         return "reseña.html";
     }
-    
+
     @PostMapping("/resenar")
-    public String resenar(ModelMap modelo,HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-          @RequestParam EnumCalificacion calificacion,@RequestParam Pelicula pelicula){
+    public String resenar(ModelMap modelo, HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
+            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
         try {
 //            Usuario usuario = usuarioServicio.buscarPorId(session.getId());
-System.out.println(pelicula);
+            System.out.println(pelicula);
             Usuario usuario = (Usuario) session.getAttribute("usuariosession");
             resenaServicio.crear(titulo, comentario, calificacion, usuario, pelicula);
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Persistida la reseña con exito.");
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             modelo.put("error", ex.getMessage());
             ex.printStackTrace();
         }
         return "reseña.html";
     }
+
     
+    //GET DE LA VISTA AGREGAR PELICULA//
     @GetMapping("/agregarPeli")
     public String agregarPeli(ModelMap modelo) {
         modelo.put("generos", Generos.values());
         return "agregarPeli.html";
-        
+
     }
+
     
+    //POST FORMULARIO PARA AGREGAR PELICULA//
     @PostMapping("/crearPeli")
     public String crearPeli(ModelMap modelo, ModelMap modelo2, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
 
         try {
 
-            
             peliculaServicio.crear(foto, titulo, genero, director, duracion, anio);
 
             modelo.put("titulo", "Felicidades!");
@@ -135,6 +141,17 @@ System.out.println(pelicula);
             return "agregarPeli.html";
         }
 
+    }
+    
+    @GetMapping("/misResenas")
+    public String misResenas(HttpSession session, ModelMap modelo) {
+        Usuario login = (Usuario)session.getAttribute("usuariosession");
+        if (login==null) {
+            return "inicio.html";
+        }
+        List<Resena> resenas =  resenaServicio.buscarResenaPorUsuario(login.getId());
+        modelo.put("resenas", resenas);
+        return "misResenas.html";
     }
 
   
