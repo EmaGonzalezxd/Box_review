@@ -48,7 +48,14 @@
                                     </div>
                                 </nav>
 
-                                <table>
+                                <table class="table table -primary">
+                                    <thead>
+                                        <tr>
+                                            <td>Titulo</td>
+                                            <td>Comentario</td>
+                                            <td>Calificacion</td>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <tr th:each="resena : ${resenas}">
                                             <td th:text ="${resena.titulo}"></td>
