@@ -70,22 +70,20 @@
 </div>
 
 <header class="contenedor-modal">
+                    <a class="abrir-modal" href="#openModal">Añadir reseña</a>
     <div  class="post-container">
         <div class="post-row">
             <div class="user-profile">
                 <!--FOTO DE PERFIL-->
-                <div th:if="${session.usuariosession} != null">
-                    <img style="width: 10%;" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
+                <div class="contenedor-img" th:if="${session.usuariosession} != null">
+                    <img class="img-perfil" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
                 </div>
                 <!---  ...  --->
-                <div>
+                <div class="nombre-usuario">
                     <p th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></p>
                 </div>
             </div>
             <div class="ingresar-reseña">
-
-                <a class="abrir-modal" href="#openModal">Añadir reseña</a>
-
                 <div id="openModal" class="modalDialog">
                     <div>
                         <a href="#close" title="Close" class="close">X</a>
@@ -115,11 +113,10 @@
                             <input type="text" class="input-reseña" name ="titulo" required>
                             <h4>Reseña</h4>
                             <input type="text" class="input-reseña" name ="comentario" required>
-
-
-                            <button type="submit" class="enviar-reseña"> Enviar</button>
+                                
+                                <button type="submit" class="enviar-reseña"> Enviar</button>
+                                <a href="#close" class="cerrar-modal"> Cancelar </a>
                         </form>
-                        <a href="#close" class="cerrar-modal"> Cancelar </a>
                     </div>
                 </div>
             </div>

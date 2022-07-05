@@ -8,5 +8,43 @@ body {
 }
 
 .form{
+    background-color: #00517c;
+    width: 400px;
     margin: auto;
+    padding: 30px;
+    border-radius: 10px;
 }
+
+.form .input-peli{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+.boton {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:none;
+    height:auto;    
+    width:auto;    
+    padding:10px;
+    color:#ffffff;    
+    background-color: #000000;    
+    border:none;    
+    border-radius:15px 15px 15px 15px;
+    transition:all 0.3s;
+    margin-left: 95px;
+    margin-top: 30px;
+  }
+
+  .boton:hover{
+    color:#ffffff;
+    background-color:#525252;
+    border:none;
+    border-radius:15px 15px 15px 15px;    
+  }
