@@ -1,9 +1,7 @@
 
 package com.Boxreview.demo.enumerations;
 
-public enum EnumCalificacion { 
-    
-Uno, Dos, Tres, Cuatro, Cinco;
+public enum EnumCalificacion {
 
-    
+Una, Dos, Tres, Cuatro, Cinco; 
 }

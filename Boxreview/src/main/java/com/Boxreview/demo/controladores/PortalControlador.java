@@ -154,6 +154,4 @@ public class PortalControlador {
         return "misResenas.html";
     }
 
-  
-
 }
