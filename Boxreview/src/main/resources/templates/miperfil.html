@@ -20,22 +20,22 @@
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="#" alt="img-avatar">
+                    <img th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="img-avatar">
                   
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">Nombre usuario</h3>
+                <h3 class="titulo" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></h3>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-user-check"></i> Nombre:</li>
+                    <li><i class="icono fas fa-user-check"></i> Nombre: <a th:text="${session.usuariosession.nombre}"></a></li>
                     <br>
-                    <li><i class="icono fas fa-user-check"></i> Apellido:</li>
+                    <li><i class="icono fas fa-user-check"></i> Apellido: <a th:text="${session.usuariosession.apellido}"></a></li>
                     <br>
-                    <li><i class="icono fas fa-user-check"></i> Email:</li>
+                    <li><i class="icono fas fa-user-check"></i> Email: <a th:text="${session.usuariosession.email}"></a></li>
                     <button type="button" class="btn btn-danger">Guardar Cambios</button>
                     <br>
                     <br>
