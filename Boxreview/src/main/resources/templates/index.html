@@ -38,16 +38,13 @@
                 
                 <div class="profile-text-container">
                     <a href="/logout"><button type="button" class="btn btn-danger">Cerrar sesion</button></a> 
-                    
-                 <!--<a href="/editarPerfil"><button type="button" class="btn btn-danger">Editar Perfil</button></a>--> 
+
                 </div>
+                
                 <div class="logo-container ">
                 <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
                   </div>
-                <div class="profile-text-container">
-                 <a href=""><button type="button" class="btn btn-danger">Cerrar sesion</button></a> 
-                </div>
-
+                
             </div>
         </div>
     </div>
@@ -56,30 +53,31 @@
             <div class="movie-list-container">
                 <h1 class="movie-list-title">TITULO....</h1>
                 <div class="movie-list-wrapper">
-                    <div class="movie-list">
+                    <div class="movie-list" th:each="peli : ${peliculas}">
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1917.jpg" alt="">
-                            <span class="movie-list-item-title">1917</span>
-                            <p class="movie-list-item-desc">descripcion de pelicula</p>
-                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                            <img class="movie-list-item-img" th:src="${'/foto/pelicula/' + peli.id}" alt="">
+                            <span class="movie-list-item-title" th:text="${peli.titulo}"  ></span>
+                            <p class="movie-list-item-desc" th:text="${peli.genero}" ></p>
+                            <a th:href="${'/resena/' + peli.id}"><button class="movie-list-item-button">Reseñar</button></a>
                         </div>
-                        <div class="movie-list-item">
+                        
+<!--                        <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://elcritico.com.ar/wp-content/uploads/2022/05/top_gun_maverick.jpg" alt="">
                             <span class="movie-list-item-title">Too Gun</span>
                             <p class="movie-list-item-desc">descripcion de pelicula</p>
-                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/aquaman.jpg" alt="">
                             <span class="movie-list-item-title">Aquaman</span>
                             <p class="movie-list-item-desc">descripcion de pelicula</p>
-                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/avengers.jpg" alt="">
                             <span class="movie-list-item-title">The avengers</span>
                             <p class="movie-list-item-desc">descripcion de pelicula</p>
-                            <a href="#"><button class="movie-list-item-button">Reseñar</button></a>
+                            <a href="/resena"><button class="movie-list-item-button">Reseñar</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="" alt="">
@@ -92,7 +90,7 @@
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">descripcion de pelicula</p>
                             <a href="reseña.html"><button class="movie-list-item-button">Ver mas</button></a>
-                        </div>
+                        </div>-->
                        
                     </div>
                     <i class="fas fa-chevron-right arrow"></i>
