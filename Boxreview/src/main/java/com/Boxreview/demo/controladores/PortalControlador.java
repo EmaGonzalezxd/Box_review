@@ -191,7 +191,7 @@ public class PortalControlador {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return "miperfil.html";
+        return "index.html";
     }
 
 }

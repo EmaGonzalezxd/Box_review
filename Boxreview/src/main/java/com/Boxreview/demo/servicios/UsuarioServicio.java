@@ -87,9 +87,7 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setContrasenia(contraEncriptada);
 
             Foto foto = fotoServicio.guardar(archivo);
-            usuario.setFoto(foto);
-
-           
+            
             usuario.setFoto(foto);
 
             usuarioRepositorio.save(usuario);
