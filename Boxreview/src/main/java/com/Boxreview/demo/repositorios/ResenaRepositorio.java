@@ -14,6 +14,8 @@ public interface ResenaRepositorio extends JpaRepository<Resena, String> {
     public Resena buscarPorNombre(@Param("titulo") String titulo);
     
     @Query("SELECT c FROM Resena c WHERE c.usuario.id = :id")
-    public List<Resena> buscarResenaPorId(@Param("id") String id);
+    public List<Resena> buscarPorId(@Param("id") String id);
     
+    @Query("SELECT c FROM Resena c WHERE c.pelicula.id = :id")
+    public List<Resena> buscarPorPelicula(@Param("id") String id);
 }

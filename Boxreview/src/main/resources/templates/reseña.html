@@ -124,22 +124,19 @@
             </div>
             </header>
 
-<!--            <section th:each="rese : ${resenas}" class="contenedor-reseñas">
+          <section th:each="rese : ${resenas}" class="contenedor-reseñas">
                 <div  class="post-container">
                     <div class="post-row">
                         <div class="user-profile">
-                            <img th:src="${'/foto/usuario/'+ reseña.usuario.id}">
+                            <img th:src="${'/foto/usuario/'+ rese.usuario.id}">
                             <div>
                                 <p th:text="${rese.getTitulo()}"></p>
                                 <br>
-                                <p class="post-text" th:text="${reseña.getComentario()}"></p>
+                                <p class="post-text" th:text="${rese.getComentario()}"></p>
                             </div>
                         </div>
                         <a href="#"><img src="imagenes/mas.png"></a>
-                    </div>-->
-
-                    
-
+                    </div>
                 </div>
             </section>
 
