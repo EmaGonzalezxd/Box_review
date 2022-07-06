@@ -39,27 +39,27 @@
 
                         <!--<a href="/editarPerfil"><button type="button" class="btn btn-danger">Editar Perfil</button></a>-->
                     </div>
-                    
-                    
+
+
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown fixed-top">
-                        <li><a class="dropdown-item" href="/miperfil">Editar mi perfil</a></li>
                         <li><a class="dropdown-item" href="/misResenas">Mis reseñas</a></li>
+                        <li><a class="dropdown-item" href="/miperfil">Mi perfil</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
                     </ul>
-                    
+
                     <div class="logo-container ">
                         <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="container">
             <div class="content-container">
                 <div class="movie-list-container">
@@ -72,7 +72,7 @@
                                 <p class="movie-list-item-desc" th:text="${peli.genero}" ></p>
                                 <a th:href="${'/resena/' + peli.id}"><button class="movie-list-item-button">Reseñar</button></a>
                             </div>
-                            
+
                             <div class="movie-list-item">
                                 <img class="movie-list-item-img"
                                      src="https://elcritico.com.ar/wp-content/uploads/2022/05/top_gun_maverick.jpg" alt="">
@@ -208,7 +208,7 @@
                 </div>
             </div>
         </div>
-        
+
         <main class="destacada">
             <h2>Peli destacada</h2>
             <a href="#"> <img class="img-destacada"

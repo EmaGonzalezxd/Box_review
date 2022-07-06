@@ -154,5 +154,36 @@ public class PortalControlador {
         modelo.put("resenas", resenas);
         return "misResenas.html";
     }
+    
+    @PostMapping("/modificarResena")
+    public String modificarResena(HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
+            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
+        try {
+            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+            resenaServicio.modificar(titulo, usuario, pelicula, titulo, comentario, calificacion);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        } 
+        return "misResenas";
+    }
+    
+    @PostMapping("/eliminarResena")
+    public String eliminarResena(@RequestParam Resena resena) {
+        try {
+            resenaServicio.eliminar(resena);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        } 
+        return "misResenas";
+    }
+    
+    @GetMapping("/miperfil")
+    public String miPerfil() {
+        return "miperfil.html";
+    }
+    
+    
 
 }
