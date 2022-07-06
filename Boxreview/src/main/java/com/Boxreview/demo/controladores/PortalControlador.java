@@ -46,8 +46,11 @@ public class PortalControlador {
         modelo.put("peliterro", peliculasTerror);
         
         List<Pelicula> peliculasAccion = peliculaServicio.mostrarAccion();
-        System.out.println(peliculasAccion);
         modelo.put("peliaccion", peliculasAccion);
+        
+        List<Pelicula> peliculasBelicas = peliculaServicio.mostrarBelica();
+        modelo.put("pelibelica", peliculasBelicas);
+        
         return "index.html";
     }
 
@@ -89,7 +92,7 @@ public class PortalControlador {
     @GetMapping("/resena/{id}")
     public String resena(ModelMap modelo, @PathVariable String id) throws ErrorServicio {
         Pelicula pelicula = peliculaServicio.buscarPorId(id);
-        List<Resena> resenas = resenaServicio.mostrarTodos();
+        List<Resena> resenas = resenaServicio.buscarResenaPorPelicula(id);
         modelo.addAttribute("resenas", resenas);
         modelo.addAttribute("pelicula", pelicula);
 //        modelo.addAttribute("calificacion",EnumCalificacion.values());
@@ -181,7 +184,8 @@ public class PortalControlador {
     }
 
     @GetMapping("/miperfil")
-    public String miPerfil() {
+    public String miPerfil(HttpSession session, ModelMap modelo) {
+        modelo.addAttribute("usuario",session.getAttribute("usuariosession"));
         return "miperfil.html";
     }
 
