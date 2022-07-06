@@ -635,11 +635,12 @@ p.clasificacion input:checked~label {
 }
 
 .logo-container .logo {
-    margin-left: 585;
+    margin-left:0;
 }
-.logo-container {
-    flex: 1;
-    margin-left: 150;
+
+.profile-text-container {
+    margin: -8px 300px;
+   
 }
 
 .dropdown-menu[data-bs-popper] {
@@ -648,9 +649,6 @@ p.clasificacion input:checked~label {
     margin-top: 0.125rem;
 }
 
-.profile-text-container {
-    margin: -10px;
-}
 .dropdown-toggle {
     white-space: pre-wrap !important;
 }
