@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                 </div>
                 <div class="container">
-                    <a class="navbar-brand" href=index.html>
+                    <a class="navbar-brand" href="/index">
                         <img src="../Logo_box_review.png" class="avatar" alt="" width="80" height="80">
                     </a>
                 </div>
@@ -53,16 +53,16 @@
         <main class="info-peli">
             <ul>
                 <li>
-                    Dirección: <p th:text="${pelicula.director}"></p>
+                    Dirección: <a th:text="${pelicula.director}"></a>
                 </li>
                 <li>
-                    Genero: <p th:text='${pelicula.genero}'></p>
+                    Genero: <a th:text='${pelicula.genero}'></a>
                 </li>
                 <li>
-                    Año: <p th:text='${pelicula.anio}'></p>
+                    Año: <a th:text='${pelicula.anio}'></a>
                 </li>
                 <li>
-                    Duración: <p th:text='${pelicula.duracion}'> minutos</p>
+                    Duración: <a th:text='${pelicula.duracion}'></a><a> minutos</a>
                 </li>
             </ul>
         </main>
@@ -141,7 +141,7 @@
                         <a href="#"><img src="imagenes/mas.png"></a>
                     </div>-->
 
-                    <img src="imagenes/group-of-diverse-people-having-business-meeting.jpg" class="post-img">
+                    
 
                 </div>
             </section>
