@@ -8,13 +8,26 @@ body {
     background: #003049;
     font-family: "calibri";
     min-height: 100vh;
-    margin-left: 230px;
-    margin-right: 230px;
-    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    overflow-x: hidden;
 }
 
 
 /* NAV */
+
+.navbar {
+    position: relative;
+    display: flex;
+    height: 90px;
+}
+
+.me-2 {
+    margin-right: 0.5rem!important;
+    height: 38px;
+}
+
 #login-box {
     width: 320px;
     height: 270px;
@@ -40,6 +53,7 @@ body {
 
 .avatar {
     border-radius: 50%;
+    margin-top: -10px;
 }
 
 #login-box h1 {
@@ -87,10 +101,11 @@ body {
     border: none;
     outline: none;
     height: 40px;
-    background: #ffc107;
+    background: #dc3545;
     color: black;
-    font-size: 22px;
-    border-radius: 17px;
+    font-size: 1rem;
+    border-color: white;
+ 
 }
 
 .login-box input[type="submit"]:hover {
@@ -102,7 +117,7 @@ body {
 .Search
 
 /* (label) */
-    {
+{
     display: table-row-group;
     background-color: white;
     border: none;
@@ -170,13 +185,16 @@ input {
     width: 650px;
     height: 600px;
     box-shadow: 13px 13px 13px rgba(22, 22, 22, 0.726);
+    margin-top: 75px;
+    margin-left: 50px;
+    box-shadow: 5px 8px 18px white ;
 }
 
 .info-peli {
     width: 550px;
-    height: 400px;
+    height:auto;
     float: right;
-    top: 300px;
+    margin-top: 75px;
     background-color: rgba(0, 0, 0, 0.548);
     box-shadow: 13px 13px 13px rgba(22, 22, 22, 0.726);
     border-radius: 30px;
@@ -211,13 +229,13 @@ h4 {
 }
 
 .input-reseña {
-    background: #535353;
+    background:white;
     width: 350px;
     font-size: 15px;
     padding: 12px 25px;
     margin-left: 25px;
     border: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+    color: black;
     outline: 0px;
     border-radius: 10px;
 }
@@ -274,7 +292,7 @@ p.clasificacion input:checked~.label-estrella {
 
 .contenedor-modal {
     width: 800px;
-    height: 110px;
+    height: 100px;
     margin-top: 300px;
     background-color: #525252d2;
     float: left;
@@ -298,8 +316,7 @@ p.clasificacion input:checked~.label-estrella {
     border-radius: 15px 15px 15px 15px;
     transition: all 0.3s;
     float: right;
-    margin-top: 55px;
-    margin-right: 5px;
+    margin-top: -45 !important;
 }
 
 .abrir-modal:hover {
@@ -317,16 +334,16 @@ p.clasificacion input:checked~.label-estrella {
     font-size: 20px;
     font-weight: none;
     height: auto;
-    width: 120px;
+    width: 150px;
     padding: 10px;
     color: #ffffff;
-    background-color: #545454;
+    background-color:#003049;
     border: none;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 15px;
     transition: all 0.3s;
-
+    margin-left: 238px;
+    margin-top: -49px;
 }
-
 .cerrar-modal:hover {
     color: #ffffff;
     background-color: #ff2424;
@@ -345,26 +362,26 @@ p.clasificacion input:checked~.label-estrella {
     width:120px;    
     padding:10px;
     color:#ffffff;    
-    background-color: #545454;    
+    background-color:#003049;
     border:none;    
     border-radius:15px 15px 15px 15px;
     transition:all 0.3s;
-  }
+}
 
-  .enviar-reseña:hover{
+.enviar-reseña:hover{
     color:#ffffff;
     background-color:#36ba38;
     border:none;
     border-radius:15px 15px 15px 15px;    
-  }
-  
+}
+
 
 /* MODAL */
 
 .modalDialog {
     position: fixed;
     font-family: Arial, Helvetica, sans-serif;
-    top: 0;
+    top: -50px!important;
     right: 0;
     bottom: 0;
     left: 0;
@@ -384,15 +401,16 @@ p.clasificacion input:checked~.label-estrella {
 
 .modalDialog>div {
     width: 800px;
-    height: 500px;
+    height: 450px !important;
     position: relative;
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
-    background: rgb(44, 44, 44);
+    background: linear-gradient(#b02a37, transparent);
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
+    border: solid 2px black;
 }
 
 .close {
@@ -416,6 +434,11 @@ p.clasificacion input:checked~.label-estrella {
 
 .close:hover {
     background: #ffffff;
+}
+
+.bg-light {
+    background-color: black !important;
+
 }
 
 
