@@ -15,30 +15,30 @@
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
 
-    <body>
-        
-        <section class="seccion-perfil-usuario">
-            <div class="perfil-usuario-header">
-                <div class="perfil-usuario-portada">
-                    <div class="perfil-usuario-avatar">
 
-                        <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}">
-
-                    </div>
+<body>
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar">
+                    <img th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="img-avatar">
+                  
                 </div>
             </div>
-            <div class="perfil-usuario-body">
-                <div class="perfil-usuario-bio">
-                    <h3 class="titulo">Nombre usuario</h3>
-                </div>
-                <div class="perfil-usuario-footer">
-                    <ul class="lista-datos">
-                        <li><i class="icono fas fa-user-check"></i> Nombre:</li>
-                        <br>
-                        <li><i class="icono fas fa-user-check"></i> Apellido:</li>
-                        <br>
-                        <li><i class="icono fas fa-user-check"></i> Email:</li>
-                        
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></h3>
+            </div>
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-user-check"></i> Nombre: <a th:text="${session.usuariosession.nombre}"></a></li>
+                    <br>
+                    <li><i class="icono fas fa-user-check"></i> Apellido: <a th:text="${session.usuariosession.apellido}"></a></li>
+                    <br>
+                    <li><i class="icono fas fa-user-check"></i> Email: <a th:text="${session.usuariosession.email}"></a></li>
+                    
+
                         <button type="button" data-bs-toggle="modal" data-bs-target="#ModalRegistro" class="btn btn-danger">Editar perfil</button>
                         
                         

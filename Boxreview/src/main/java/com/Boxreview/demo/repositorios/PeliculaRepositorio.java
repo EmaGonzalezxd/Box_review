@@ -15,7 +15,7 @@ public interface PeliculaRepositorio extends JpaRepository<Pelicula, String>{
     public Pelicula buscarPorGenero(@Param("genero") String genero);
     
     @Query("SELECT c FROM Pelicula c WHERE c.titulo LIKE %:titulo%")
-    public List<Pelicula> buscarPorTitulo(@Param("titulo") String titulo);
+    public Pelicula buscarPorTitulo(@Param("titulo") String titulo);
     
 
     

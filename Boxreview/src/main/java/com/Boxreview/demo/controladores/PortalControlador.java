@@ -50,8 +50,9 @@ public class PortalControlador {
     @GetMapping("/buscador")
     public String buscador(ModelMap model, @RequestParam String titulo) {
         try {
-            List<Pelicula> peliculas = peliculaServicio.buscarPeli(titulo);
-            return "reseña.html";
+            Pelicula pelicula =peliculaServicio.buscarPeli(titulo);
+            
+            return "redirect:/resena/" + pelicula.getId();
         } catch (Exception e) {
             e.printStackTrace();
             model.put("error", e.getMessage());
@@ -101,13 +102,13 @@ public class PortalControlador {
             resenaServicio.crear(titulo, comentario, calificacion, usuario, pelicula);
             modelo.put("titulo", "Felicidades!");
             modelo.put("descripcion", "Persistida la reseña con exito.");
-
+            return "redirect:/resena/" + pelicula.getId();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             modelo.put("error", ex.getMessage());
             ex.printStackTrace();
         }
-        return ("/reseña.html");
+        return "redirect:/resena/" + pelicula.getId();
     }
 
     //GET DE LA VISTA AGREGAR PELICULA//
