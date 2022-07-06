@@ -103,11 +103,11 @@ public class PeliculaServicio {
     }
     
     @Transactional
-    public List<Pelicula> buscarPeli(String titulo) throws Exception {
+    public Pelicula buscarPeli(String titulo) throws Exception {
 
         try {
-            List<Pelicula> peliculas = peliculaRepositorio.buscarPorTitulo(titulo);
-            return peliculas;
+            Pelicula pelicula = peliculaRepositorio.buscarPorTitulo(titulo);
+            return pelicula;
         } catch (Exception e) {
             throw new Exception("Esta pelicula no existe");
         }
