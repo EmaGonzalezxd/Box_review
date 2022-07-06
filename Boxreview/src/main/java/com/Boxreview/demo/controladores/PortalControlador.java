@@ -41,9 +41,13 @@ public class PortalControlador {
 
     @GetMapping("/index")
     public String index(ModelMap modelo) {
-        List<Pelicula> peliculas = peliculaServicio.mostrarTodos();
-        System.out.println(peliculas);
-        modelo.put("peliculas", peliculas);
+        
+        List<Pelicula> peliculasTerror = peliculaServicio.mostrarTerror();
+        modelo.put("peliterro", peliculasTerror);
+        
+        List<Pelicula> peliculasAccion = peliculaServicio.mostrarAccion();
+        System.out.println(peliculasAccion);
+        modelo.put("peliaccion", peliculasAccion);
         return "index.html";
     }
     
