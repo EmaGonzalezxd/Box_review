@@ -89,8 +89,10 @@ public class UsuarioServicio implements UserDetailsService {
             Foto foto = fotoServicio.guardar(archivo);
             
             usuario.setFoto(foto);
-
             usuarioRepositorio.save(usuario);
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", usuario);
         } else {
             throw new ErrorServicio("No se encontro el usuario deseado");
         }

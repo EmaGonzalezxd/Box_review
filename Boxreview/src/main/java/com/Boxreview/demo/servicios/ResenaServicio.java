@@ -82,7 +82,11 @@ public class ResenaServicio {
     }
     
     public List<Resena> buscarResenaPorUsuario(String id){
-        return resenaRepositorio.buscarResenaPorId(id);
+        return resenaRepositorio.buscarPorId(id);
+    }
+    
+    public List<Resena> buscarResenaPorPelicula(String id){
+        return resenaRepositorio.buscarPorPelicula(id);
     }
     
     @Transactional
