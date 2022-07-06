@@ -72,24 +72,22 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void modificarNombre(MultipartFile archivo, String nombre,
-             String id) throws ErrorServicio, Exception {
+    public void modificar(String idUsuario, MultipartFile archivo, String nombre, String apellido, String email, String contrasenia) throws ErrorServicio, Exception {
 
-        if (nombre == null || nombre.isEmpty()) {
-            throw new ErrorServicio("El nombre no puede ser nulo");
-        }
+        validar(nombre, apellido, email, contrasenia);
 
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
             usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setEmail(email);
 
-            String idFoto = null;
-            if (usuario.getFoto() != null) {
-                idFoto = usuario.getFoto().getId();
-            }
+            String contraEncriptada = new BCryptPasswordEncoder().encode(contrasenia);
+            usuario.setContrasenia(contraEncriptada);
 
-            Foto foto = fotoServicio.actualizar(idFoto, archivo);
+            Foto foto = fotoServicio.guardar(archivo);
+            
             usuario.setFoto(foto);
 
             usuarioRepositorio.save(usuario);

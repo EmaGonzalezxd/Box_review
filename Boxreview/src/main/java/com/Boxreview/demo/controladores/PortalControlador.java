@@ -46,9 +46,9 @@ public class PortalControlador {
         modelo.put("peliculas", peliculas);
         return "index.html";
     }
-    
+
     @GetMapping("/buscador")
-    public String buscador(ModelMap model, @RequestParam String titulo){
+    public String buscador(ModelMap model, @RequestParam String titulo) {
         try {
             Pelicula pelicula =peliculaServicio.buscarPeli(titulo);
             
@@ -58,10 +58,8 @@ public class PortalControlador {
             model.put("error", e.getMessage());
             return "index.html";
         }
-        
 
     }
-    
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
@@ -85,7 +83,7 @@ public class PortalControlador {
     }
 
     @GetMapping("/resena/{id}")
-    public String resena(ModelMap modelo, @PathVariable String id ) throws ErrorServicio {
+    public String resena(ModelMap modelo, @PathVariable String id) throws ErrorServicio {
         Pelicula pelicula = peliculaServicio.buscarPorId(id);
         List<Resena> resenas = resenaServicio.mostrarTodos();
         modelo.addAttribute("resenas", resenas);
@@ -96,7 +94,7 @@ public class PortalControlador {
 
     @PostMapping("/resenar")
     public String resenar(ModelMap modelo, HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula ) {
+            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
         try {
 //            Usuario usuario = usuarioServicio.buscarPorId(session.getId());
             System.out.println(pelicula);
@@ -113,7 +111,6 @@ public class PortalControlador {
         return "redirect:/resena/" + pelicula.getId();
     }
 
-    
     //GET DE LA VISTA AGREGAR PELICULA//
     @GetMapping("/agregarPeli")
     public String agregarPeli(ModelMap modelo) {
@@ -122,7 +119,6 @@ public class PortalControlador {
 
     }
 
-    
     //POST FORMULARIO PARA AGREGAR PELICULA//
     @PostMapping("/crearPeli")
     public String crearPeli(ModelMap modelo, ModelMap modelo2, @RequestParam MultipartFile foto, @RequestParam String titulo, @RequestParam String genero, @RequestParam String director, @RequestParam Integer duracion, @RequestParam String anio) {
@@ -144,18 +140,18 @@ public class PortalControlador {
         }
 
     }
-    
+
     @GetMapping("/misResenas")
     public String misResenas(HttpSession session, ModelMap modelo) {
-        Usuario login = (Usuario)session.getAttribute("usuariosession");
-        if (login==null) {
+        Usuario login = (Usuario) session.getAttribute("usuariosession");
+        if (login == null) {
             return "inicio.html";
         }
-        List<Resena> resenas =  resenaServicio.buscarResenaPorUsuario(login.getId());
+        List<Resena> resenas = resenaServicio.buscarResenaPorUsuario(login.getId());
         modelo.put("resenas", resenas);
         return "misResenas.html";
     }
-    
+
     @PostMapping("/modificarResena")
     public String modificarResena(HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
             @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
@@ -165,10 +161,10 @@ public class PortalControlador {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
-        } 
+        }
         return "misResenas";
     }
-    
+
     @PostMapping("/eliminarResena")
     public String eliminarResena(@RequestParam Resena resena) {
         try {
@@ -176,15 +172,26 @@ public class PortalControlador {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
-        } 
+        }
         return "misResenas";
     }
-    
+
     @GetMapping("/miperfil")
     public String miPerfil() {
         return "miperfil.html";
     }
-    
-    
+
+    @PostMapping("/editarUsuario")
+    public String editarUsuario(HttpSession session, ModelMap modelo, @RequestParam MultipartFile foto, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam String contrasenia) {
+        
+        try {
+            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+            usuarioServicio.modificar(usuario.getId(), foto, nombre, apellido, email, contrasenia);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+        return "index.html";
+    }
 
 }
