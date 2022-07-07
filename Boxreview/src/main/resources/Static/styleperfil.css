@@ -19,6 +19,10 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
+.avatar{
+    border-radius: 50%;
+    margin-left: 45%;
+}
 
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {

@@ -80,8 +80,8 @@ public class PortalControlador {
 
             usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
 
-            modelo.put("titulo", "Felicidades!");
-            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+           
+            modelo.put("exito", "Felicidades! Usuario registrado satisfactoriamente.");
 
             return "inicio.html";
 
@@ -203,11 +203,14 @@ public class PortalControlador {
         try {
             Usuario usuario = (Usuario) session.getAttribute("usuariosession");
             usuarioServicio.modificar(usuario.getId(), foto, nombre, apellido, email, contrasenia);
+            modelo.put("exito", "!Usuario actualizado¡");
+            return "miperfil.html";
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
+            return "miperfil.html";
         }
-        return "index.html";
+        
     }
 
 }

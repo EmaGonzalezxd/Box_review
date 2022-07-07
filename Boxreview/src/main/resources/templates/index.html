@@ -20,15 +20,15 @@
             <div class="navbar-container">
 
                 <div class="avatar">
-                    <img class="logo" src="Logo_box_review.png" height="80" width="">
+                    <img class="logo" src="Logo_box_review.png" height="90" width="90">
                 </div>
 
                 <div class="profile-container">
                     <div class="container-fluid">
                         <form action="/buscador" method="GET" enctype="multipart/form-data" class="d-flex" role="search">
-                            <input id='titulo' name="titulo" class="form-control me-2" type="search" placeholder="Search"
+                            <input id='titulo' name="titulo" class="form-control me-2" type="search" placeholder="pelicula"
                                    aria-label="Search">
-                            <button class="btn btn-light" type="submit">Search</button>
+                            <button class="btn btn-light" type="submit">Buscar</button>
                         </form>
 
                     </div>
@@ -52,8 +52,9 @@
                     </ul>
                     
 
-                    <div class="logo-container me-2">
-                        <img class="logo me-2" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
+                    <div class="logo-container ">
+                        <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
+                        <p class="user" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}" >
                     </div>
                 </div>
             </div>
