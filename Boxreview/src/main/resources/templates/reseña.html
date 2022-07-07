@@ -17,7 +17,8 @@
             <p class="h5" th:text="${descripcion}" style="color: #000"></p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div> -->
-
+<nav>
+    <div>
         <nav class="navbar navbar-expand-lg bg-light">
 
             <nav class="navbar bg-light">
@@ -37,16 +38,10 @@
                     </form>
                 </div>
             </nav>
-            <!--    <nav class="navbar bg-light">
-                  <form class="container-fluid justify-content-start">
-                    <a class="btn btn-danger" href="Registro.html" type="button">Iniciar Secion</a>
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                      type="button">Registrarse</button>
-                  </form>
-                </nav>-->
-        </div>
+        </nav>
     </div>
 </nav>
+
 <div class="peli">
     <img class="img-peli" th:src="${'/foto/pelicula/' + pelicula.id}" alt="">
     <div>
@@ -92,12 +87,12 @@
 
                         <h2>¿Que te parecio?</h2>
                         <form action="/resenar" method="POST" enctype="multipart/form-data">
-                            <h4>Pelicula</h4>               
-                            <select class="form-control" name="pelicula" required>
-                                <option selected value="Elija una pelicula"></option>
-
-                                <option th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}"></option>
+                            <h4>Pelicula</h4>  
+                            
+                            <select  class="form-control" name="pelicula" required>
+                                <option selected  th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}"></option>
                             </select> 
+                            
                             <p class="clasificacion" required>
                                 <label class="label-estrella" for="radio0">★</label>
                                 <input class="input-reseña" id="radio0" type="radio" name="calificacion" value="Cinco">
@@ -138,7 +133,6 @@
                                 <p class="post-text" th:text="${rese.getComentario()}"></p>
                             </div>
                         </div>
-                        <a href="#"><img src="imagenes/mas.png"></a>
                     </div>
                 </div>
             </section>
