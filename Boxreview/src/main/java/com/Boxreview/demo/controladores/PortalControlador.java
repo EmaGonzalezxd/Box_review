@@ -52,6 +52,12 @@ public class PortalControlador {
         List<Pelicula> peliculasBelicas = peliculaServicio.mostrarBelica();
         modelo.put("pelibelica", peliculasBelicas);
         
+        List<Pelicula> peliculasComedia = peliculaServicio.mostrarComedia();
+        modelo.put("pelicomedia", peliculasComedia);
+        
+        List<Pelicula> peliculasRomance = peliculaServicio.mostrarRomance();
+        modelo.put("peliromance", peliculasRomance);
+        
         return "index.html";
     }
 
@@ -64,7 +70,7 @@ public class PortalControlador {
         } catch (Exception e) {
             e.printStackTrace();
             model.put("error", e.getMessage());
-            return "index.html";
+            return "redirect:/index";
         }
 
     }
@@ -156,21 +162,23 @@ public class PortalControlador {
             return "inicio.html";
         }
         List<Resena> resenas = resenaServicio.buscarResenaPorUsuario(login.getId());
+        List<Pelicula> peliculas = peliculaServicio.mostrarTodos();
         modelo.put("resenas", resenas);
+        modelo.put("peliculas", peliculas);
         return "misResenas.html";
     }
 
-    @PostMapping("/modificarResena")
-    public String modificarResena(HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
+    @PostMapping("/modificarResena/{id}")
+    public String modificarResena(@PathVariable String id, HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
+            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula, ModelMap modelo) {
         try {
             Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-            resenaServicio.modificar(titulo, usuario, pelicula, titulo, comentario, calificacion);
+            resenaServicio.modificar(id, usuario,pelicula, titulo, comentario, calificacion);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return "misResenas";
+        return "redirect:/misResenas";
     }
 
     @GetMapping("/eliminarResena/{id}")
