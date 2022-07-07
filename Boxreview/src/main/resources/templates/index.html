@@ -55,6 +55,7 @@
 
                     <div class="logo-container ">
                         <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
+                        <p th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}" >
                     </div>
                 </div>
             </div>
