@@ -118,6 +118,16 @@ public class PeliculaServicio {
     }
     
     @Transactional
+    public List<Pelicula> mostrarComedia() {
+        return peliculaRepositorio.buscarPorGenero("COMEDIA");
+    }
+    
+    @Transactional
+    public List<Pelicula> mostrarRomance() {
+        return peliculaRepositorio.buscarPorGenero("ROMANCE");
+    }
+    
+    @Transactional
     public Pelicula buscarPeli(String titulo) throws Exception {
 
         try {
