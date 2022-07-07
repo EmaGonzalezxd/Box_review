@@ -6,6 +6,7 @@ import com.Boxreview.demo.entidades.Resena;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.enumerations.EnumCalificacion;
 import com.Boxreview.demo.enumerations.Generos;
+import com.Boxreview.demo.repositorios.PeliculaRepositorio;
 import com.Boxreview.demo.servicios.PeliculaServicio;
 import com.Boxreview.demo.servicios.ResenaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
@@ -34,6 +35,9 @@ public class PortalControlador {
 
     @Autowired
     private PeliculaServicio peliculaServicio;
+    
+    @Autowired
+    private PeliculaRepositorio peliculaRepositorio;
 
     @GetMapping("/")
     public String inicio() {
@@ -160,19 +164,22 @@ public class PortalControlador {
         return "misResenas.html";
     }
 
-    @PostMapping("/modificarResena")
-    public String modificarResena(HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
+    @GetMapping("/modificarResena/{id}")
+    public String modificarResena(HttpSession session,@RequestParam String peli, @PathVariable String id,@RequestParam String titulo, @RequestParam String comentario,
+            @RequestParam EnumCalificacion calificacion) {
         try {
-            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-            resenaServicio.modificar(titulo, usuario, pelicula, titulo, comentario, calificacion);
+            
+            Pelicula pelicula = peliculaRepositorio.buscarPorTitulo(peli);
+            resenaServicio.modificar(id, pelicula, titulo, comentario, calificacion);
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return "misResenas";
+        return "redirect:/misResenas";
     }
 
+    
     @GetMapping("/eliminarResena/{id}")
     public String eliminarResena(@PathVariable String id) {
         try {

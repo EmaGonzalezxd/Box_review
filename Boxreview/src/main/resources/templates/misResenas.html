@@ -111,11 +111,11 @@
                     <div>
                         <a href="#close" title="Close" class="close">X</a>
                         <h2>¿Cambiaste de opinion?</h2>
-                        <form action="/modificarResena" method="POST" enctype="multipart/form-data">
+                        <form th:href="@{/modificarResena/} + @{resena.id}" method="GET" >
                             <h4>Pelicula</h4>
-                            <!--                            <select class="form-control" name="pelicula" required>
-                                                            <option th:value="${resena.pelicula.id}" th:text="${resena.pelicula.titulo}"></option>
-                                                        </select>-->
+                                                       <select class="form-control" name="peli" required>
+                                                            <!--<option th:value="${resena.pelicula.titulo}" th:text="${resena.pelicula.titulo}"></option>-->
+                                                        </select>
                             <p class="clasificacion" required>
                                 <input class="input-reseña" id="radio1" type="radio" name="calificacion" value="Cinco">
                                 <label class="label-estrella" for="radio1">★</label>
