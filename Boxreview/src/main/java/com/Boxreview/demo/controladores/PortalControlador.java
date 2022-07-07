@@ -94,7 +94,7 @@ public class PortalControlador {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
-            modelo.put("error", ex.getMessage());
+            modelo.put("error", ("No se puedo crear el usuario"));
             return "inicio.html";
         }
 
