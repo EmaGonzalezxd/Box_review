@@ -76,8 +76,8 @@ public class PortalControlador {
 
             usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
 
-            modelo.put("titulo", "Felicidades!");
-            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+           
+            modelo.put("exito", "Felicidades! Usuario registrado satisfactoriamente.");
 
             return "inicio.html";
 
