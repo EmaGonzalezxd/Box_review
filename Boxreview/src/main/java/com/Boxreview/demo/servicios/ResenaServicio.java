@@ -57,9 +57,9 @@ public class ResenaServicio {
     }
     
     @Transactional
-    public void eliminar(Resena resena) {
+    public void eliminar(String id) {
         
-        resenaRepositorio.delete(resena);
+        resenaRepositorio.deleteById(id);
     }
     
     public void validar(String titulo, String comentario,
