@@ -47,6 +47,8 @@
         </div>
     </div>
 </nav>
+<h1 class="titulo-peli"> Titulo pelicula </h1>
+
 <div class="peli">
     <img class="img-peli" th:src="${'/foto/pelicula/' + pelicula.id}" alt="">
     <div>
@@ -73,17 +75,17 @@
     <div  class="post-container">
         <div class="post-row">
             <div class="user-profile">
-                <!--FOTO DE PERFIL-->
-                <div th:if="${session.usuariosession} != null">
+<!--                FOTO DE PERFIL
+-->                <div th:if="${session.usuariosession} != null">
                     <img style="width: 10%;" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
                 </div>
                 <!---  ...  --->
                 <div>
-                    <p th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></p>
+                    <p class="nombre-usuario" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></p>
                 </div>
             </div>
             <div class="ingresar-reseña">
-
+    
                 <a class="abrir-modal" href="#openModal">Añadir reseña</a>
 
                 <div id="openModal" class="modalDialog">
@@ -126,22 +128,17 @@
             </div>
             </header>
 
-<!--            <section th:each="rese : ${resenas}" class="contenedor-reseñas">
+          <section th:each="rese : ${resenas}" class="contenedor-reseñas">
                 <div  class="post-container">
                     <div class="post-row">
                         <div class="user-profile">
-                            <img th:src="${'/foto/usuario/'+ reseña.usuario.id}">
+                            <img th:src="${'/foto/usuario/'+ rese.usuario.id}">
                             <div>
-                                <p th:text="${rese.getTitulo()}"></p>
-                                <br>
-                                <p class="post-text" th:text="${reseña.getComentario()}"></p>
+                                <p class="titulo" th:text="${rese.getTitulo()}"></p>
+                                <p class="post-text" th:text="${rese.getComentario()}"></p>
                             </div>
                         </div>
-                        <a href="#"><img src="imagenes/mas.png"></a>
-                    </div>-->
-
-                    
-
+                    </div>
                 </div>
             </section>
 
