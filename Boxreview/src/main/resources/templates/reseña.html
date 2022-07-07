@@ -41,7 +41,7 @@
         </nav>
     </div>
 </nav>
-<h1 class="titulo-peli"> Titulo pelicula </h1>
+<h1 class="titulo-peli mx-5" th:text="${pelicula.titulo}"></h1>
 
 <div class="peli">
     <img class="img-peli" th:src="${'/foto/pelicula/' + pelicula.id}" alt="">
