@@ -35,7 +35,7 @@ public class ResenaServicio {
     }
     
     @Transactional
-    public void modificar(String id, Usuario usuario, Pelicula pelicula,
+    public void modificar(String id, Pelicula pelicula,
             String titulo, String comentario, EnumCalificacion Calificacion) throws ErrorServicio {
         
         Optional<Resena> respuesta = resenaRepositorio.findById(id);

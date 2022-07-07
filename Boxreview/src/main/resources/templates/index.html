@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Style.css">
         <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
             rel="stylesheet">
@@ -35,13 +35,11 @@
 
 
                     <div class="profile-text-container">
-                        <!--                   <a href="/logout"><button type="button" class="btn btn-danger">Cerrar sesion</button></a> -->
-
-                        <!--<a href="/editarPerfil"><button type="button" class="btn btn-danger">Editar Perfil</button></a>-->
+                       
                     </div>
 
 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown fixed-top">
@@ -52,6 +50,7 @@
                         </li>
                         <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
                     </ul>
+                    
 
                     <div class="logo-container ">
                         <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
@@ -84,7 +83,7 @@
                 <div class="movie-list-container">
                     <h1 class="movie-list-title">ACCIÓN</h1>
                     <div class="movie-list-wrapper">
-                        <div class="movie-list">
+                        <div class="movie-list"> 
                             <div class="movie-list-item" th:each="peli : ${peliaccion}">
                                 <img class="movie-list-item-img" th:src="${'/foto/pelicula/' + peli.id}" alt="">
                                 <span class="movie-list-item-title" th:text="${peli.titulo}"  ></span>
