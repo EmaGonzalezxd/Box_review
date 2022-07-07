@@ -173,7 +173,7 @@ public class PortalControlador {
         return "misResenas";
     }
 
-    @GetMapping("/eliminarResena{id}")
+    @GetMapping("/eliminarResena/{id}")
     public String eliminarResena(@PathVariable String id) {
         try {
             resenaServicio.eliminar(id);
@@ -181,7 +181,7 @@ public class PortalControlador {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return "misResenas";
+        return "redirect:/misResenas";
     }
 
     @GetMapping("/miperfil")

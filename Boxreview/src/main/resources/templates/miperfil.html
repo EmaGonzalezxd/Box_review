@@ -1,151 +1,103 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi perfil</title>
+        <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <link rel="stylesheet" href="styleperfil.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="misReseñas.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Box Reviews</title>
-</head>
 
 <body>
-
-    <!--                                <div class="alert alert-success alert-dismissible sticky-top"  role="alert" th:if="${error == null}">
-                                            <p class="h3" th:text="${titulo}" style="color: #000"></p>
-                                            <p class="h5" th:text="${descripcion}" style="color: #000"></p>
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> -->
-
-    <div class="navbar">
-        <div class="navbar-container">
-            <a class="navbar-brand" href="/index">
-                <img src="../Logo_box_review.png" class="avatar" alt="" width="80" height="80">
-            </a>
-
-            <div class="profile-container">
-                <div class="container-fluid">
-                    <form action="/buscador" method="GET" enctype="multipart/form-data" class="d-flex" role="search">
-                        <input id='titulo' name="titulo" class="form-control me-2" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-light" type="submit">Search</button>
-                    </form>
-
-                </div>
-
-
-                <div class="profile-text-container">
-                    <!--                   <a href="/logout"><button type="button" class="btn btn-danger">Cerrar sesion</button></a> -->
-
-                    <!--<a href="/editarPerfil"><button type="button" class="btn btn-danger">Editar Perfil</button></a>-->
-                </div>
-
-
-                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown fixed-top">
-                    <li><a class="dropdown-item" href="/misResenas">Mis reseñas</a></li>
-                    <li><a class="dropdown-item" href="/miperfil">Mi perfil</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
-                </ul>
-
-                <div class="logo-container ">
-                    <img class="logo" th:src="${'/foto/usuario/'+ session.usuariosession.id}" height="80" width="">
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar">
+                    <img th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="img-avatar">
+                  
                 </div>
             </div>
         </div>
-    </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></h3>
+            </div>
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-user-check"></i> Nombre: <a th:text="${session.usuariosession.nombre}"></a></li>
+                    <br>
+                    <li><i class="icono fas fa-user-check"></i> Apellido: <a th:text="${session.usuariosession.apellido}"></a></li>
+                    <br>
+                    <li><i class="icono fas fa-user-check"></i> Email: <a th:text="${session.usuariosession.email}"></a></li>
+                    
 
-    <!-- LISTA DE RESEÑAS -->
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#ModalRegistro" class="btn btn-danger">Editar perfil</button>
+                        
+                        
+                        
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Titulo</th>
-                <th scope="col">Comentario</th>
-                <th scope="col">Calificacion</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="resena : ${resenas}">
-                <td th:text="${resena.titulo}"></td>
-                <td th:text="${resena.comentario}"></td>
-                <td th:text="${resena.calificacion}"></td>
-                <td><button class="btn btn-danger" action="/eliminarResena" method="POST"
-                        type="button">Eliminar</button></td>
-                <td> <a class="abrir-modal" href="#openModal">Modificar reseña</a> </td>
-
-            </tr>
-
-            <tr th:each="resena : ${resenas}">
-                <td th:text="${resena.titulo}"></td>
-                <td th:text="${resena.comentario}"></td>
-                <td th:text="${resena.calificacion}"></td>
-                <td><button class="btn btn-danger" action="/eliminarResena" method="POST" type="button">Eliminar</button></td>
-                <td> <a class="abrir-modal" href="#openModal">Modificar reseña</a> </td>
-            </tr>
-
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEditar"
-                type="button">Editar</button>
-        </tbody>
-    </table>
-
-    <!-- MODAL -->
-    <header class="contenedor-modal">
-        <div class="ingresar-reseña">
-            <div id="openModal" class="modalDialog">
-                <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <h2>¿Cambiaste de opinion?</h2>
-                    <form action="/modificarResena" method="POST" enctype="multipart/form-data">
-                        <h4>Pelicula</h4>
-                        <select class="form-control" name="pelicula" required>
-                            <option selected value="Elija una pelicula"></option>
-
-                            <option th:each="peli : ${pelicula}" th:value="${peli.id}" th:text="${peli.getTitulo()}">
-                            </option>
-                        </select>
-                        <p class="clasificacion" required>
-                            <input class="input-reseña" id="radio1" type="radio" name="calificacion" value="Cinco">
-                            <label class="label-estrella" for="radio1">★</label>
-                            <input class="input-reseña" id="radio2" type="radio" name="calificacion" value="Cuatro">
-                            <label class="label-estrella" for="radio2">★</label>
-                            <input class="input-reseña" id="radio3" type="radio" name="calificacion" value="Tres">
-                            <label class="label-estrella" for="radio3">★</label>
-                            <input class="input-reseña" id="radio4" type="radio" name="calificacion" value="Dos">
-                            <label class="label-estrella" for="radio4">★</label>
-                            <input class="input-reseña" id="radio5" type="radio" name="calificacion" value="Uno">
-                            <label class="label-estrella" for="radio5">★</label>
-                        </p>
-
-                        <h4>Titulo</h4>
-                        <input type="text" class="input-reseña" name="titulo" required>
-                        <h4>Reseña</h4>
-                        <input type="text" class="input-reseña" name="comentario" required>
-
-
-                        <button type="submit" class="enviar-reseña"> Enviar</button>
-                    </form>
-                    </form>
+                    </ul>
                 </div>
-    </header>
+            </div>
+            <div>
+                
+                <!-- MODAL ACTUALIZAR USUARIO-->
+                
+                <link rel="stylesheet" href="style2.css">
+                
+                <div class="modal fade" id="ModalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div id="modal-content">
+                                    <div id="modal-header">
+                                        <h1>Confirmar</h1>
+                                    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                                    <div class="alert alert-danger" role="alert" th:if="${error != null}">
+                                        <p class="h5 fw-normal"  th:text="${error}" style="color: #000000"></p>
+                                    </div>
+
+                                    <div id="modal-body">
+                                        <form action="/editarUsuario" method="POST" enctype="multipart/form-data">
+                                            <label for="nombre">Nombre</label>
+                                            <input required type="text" placeholder="nombre" id="nombre" name="nombre">
+
+                                            <label for="apellido">Apellido</label>
+                                            <input required type="text" placeholder="apellido" id="apellido" name="apellido">
+
+                                            <label for="email">Email</label>
+                                            <input required type="text" placeholder="email" id="email" name="email">
+
+                                            <label for="contrasenia">Contraseña</label>
+                                            <input required type="password" placeholder="clave" id="contrasenia" name="contrasenia">
+
+                                            <label for="foto">Foto</label>
+                                            <input required type="file" placeholder="foto" id="foto" name="foto">
+
+                                            <button type="submit">Actualizar</button>>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
-</body>
+    </body>
 
 </html>
