@@ -6,6 +6,7 @@ import com.Boxreview.demo.entidades.Resena;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.enumerations.EnumCalificacion;
 import com.Boxreview.demo.enumerations.Generos;
+import com.Boxreview.demo.repositorios.PeliculaRepositorio;
 import com.Boxreview.demo.servicios.PeliculaServicio;
 import com.Boxreview.demo.servicios.ResenaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
@@ -34,6 +35,9 @@ public class PortalControlador {
 
     @Autowired
     private PeliculaServicio peliculaServicio;
+    
+    @Autowired
+    private PeliculaRepositorio peliculaRepositorio;
 
     @GetMapping("/")
     public String inicio() {
@@ -82,8 +86,8 @@ public class PortalControlador {
 
             usuarioServicio.crear(foto, nombre, apellido, email, contrasenia);
 
-            modelo.put("titulo", "Felicidades!");
-            modelo.put("descripcion", "Usuario registrado satisfactoriamente.");
+           
+            modelo.put("exito", "Felicidades! Usuario registrado satisfactoriamente.");
 
             return "inicio.html";
 
@@ -168,12 +172,14 @@ public class PortalControlador {
         return "misResenas.html";
     }
 
-    @PostMapping("/modificarResena/{id}")
-    public String modificarResena(@PathVariable String id, HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula, ModelMap modelo) {
+    @GetMapping("/modificarResena/{id}")
+    public String modificarResena(HttpSession session,@RequestParam String peli, @PathVariable String id,@RequestParam String titulo, @RequestParam String comentario,
+            @RequestParam EnumCalificacion calificacion) {
         try {
-            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-            resenaServicio.modificar(id, usuario,pelicula, titulo, comentario, calificacion);
+            
+            Pelicula pelicula = peliculaRepositorio.buscarPorTitulo(peli);
+            resenaServicio.modificar(id, pelicula, titulo, comentario, calificacion);
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
@@ -181,6 +187,7 @@ public class PortalControlador {
         return "redirect:/misResenas";
     }
 
+    
     @GetMapping("/eliminarResena/{id}")
     public String eliminarResena(@PathVariable String id) {
         try {
@@ -204,11 +211,14 @@ public class PortalControlador {
         try {
             Usuario usuario = (Usuario) session.getAttribute("usuariosession");
             usuarioServicio.modificar(usuario.getId(), foto, nombre, apellido, email, contrasenia);
+            modelo.put("exito", "!Usuario actualizado¡");
+            return "miperfil.html";
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
+            return "miperfil.html";
         }
-        return "index.html";
+        
     }
 
 }

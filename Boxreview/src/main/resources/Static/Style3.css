@@ -54,6 +54,7 @@ body {
 .avatar {
     border-radius: 50%;
     margin-top: -10px;
+    height: 86px
 }
 
 #login-box h1 {
@@ -274,13 +275,14 @@ p.clasificacion input:checked~.label-estrella {
 
 .contenedor-modal {
     width: 468px;
-    height: 90px;
+    height: 150px;
     margin-top: 300px;
-    background-color: #b02a37;
+   background: linear-gradient(black, transparent);
     float: left;
     border-radius: 15px;
     margin-left: 10px;
     padding: 10px;
+    border: solid 2px white;
 }
 
 /* BOTONES DE MODAL */
@@ -294,26 +296,27 @@ p.clasificacion input:checked~.label-estrella {
     height: auto;
     width: 150px;
     padding: 10px;
-    color: #ffffff;
-    background-color: #000000;
+    color: black;
+    background-color: white;
     border: none;
     border-radius: 15px 15px 15px 15px;
     transition: all 0.3s;
     float: right;
-    margin-top: -72px;
+    margin-top: -78px;
+    margin-right: -11px
 }
 
 .abrir-modal:hover {
     color: #ffffff;
-    background-color: #616161;
+    background-color: #b02a37;
     border: none;
     border-radius: 15px 15px 15px 15px;
 }
 p.nombre-usuario{
-    margin-top: 0;
+    margin-top: -5px;
     margin-bottom: 1rem;
-    font-size: 25px;
-    color: black;
+    font-size: 35px;
+    color: white;
 }
 .cerrar-modal {
     display: flex;
@@ -360,6 +363,7 @@ p.nombre-usuario{
 img, svg {
     vertical-align: middle;
     width: 100px;
+    height: 50px;
 }
 .enviar-reseña:hover{
     color:#ffffff;
@@ -403,7 +407,7 @@ img, svg {
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
-    border: solid 2px black;
+    border: solid 2px white;
 }
 
 .close {
@@ -466,4 +470,16 @@ h1.titulo-peli{
     color: white;
     font-family: cursive;
     margin-bottom: -30px;
+}
+.foto-usuario {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.foto-perfil{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
 }

@@ -634,10 +634,6 @@ p.clasificacion input:checked~label {
 
 }
 
-.logo-container .logo {
-    margin-left:0;
-}
-
 .profile-text-container {
     margin: -8px 300px;
    
@@ -651,4 +647,10 @@ p.clasificacion input:checked~label {
 
 .dropdown-toggle {
     white-space: pre-wrap !important;
+}
+
+p.user{
+    margin-top: -66px;
+    margin-bottom: 1rem;
+    margin-left: 100px;
 }
