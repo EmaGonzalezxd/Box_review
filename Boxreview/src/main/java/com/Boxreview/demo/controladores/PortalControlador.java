@@ -68,7 +68,7 @@ public class PortalControlador {
         } catch (Exception e) {
             e.printStackTrace();
             model.put("error", e.getMessage());
-            return "index.html";
+            return "redirect:/index";
         }
 
     }
