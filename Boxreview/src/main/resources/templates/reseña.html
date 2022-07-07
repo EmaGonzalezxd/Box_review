@@ -25,18 +25,18 @@
                 </div>
                 <div class="container">
                     <a class="navbar-brand" href="/index">
-                        <img src="../Logo_box_review.png" class="avatar" alt="" width="80" height="80">
+                        <img src="../Logo_box_review.png" class="avatar" alt="" width="120" height="120">
                     </a>
                 </div>
             </nav>
-            <nav class="navbar bg-light">
+<!--            <nav class="navbar bg-light">
                 <div class="container-fluid">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="titulo,genero,actor" aria-label="Search">
                         <button type="button" class="btn btn-light">Buscar</button>
                     </form>
                 </div>
-            </nav>
+            </nav>-->
             <!--    <nav class="navbar bg-light">
                   <form class="container-fluid justify-content-start">
                     <a class="btn btn-danger" href="Registro.html" type="button">Iniciar Secion</a>
@@ -47,7 +47,10 @@
         </div>
     </div>
 </nav>
-<h1 class="titulo-peli"> Titulo pelicula </h1>
+<div>
+    <h1 class="titulo-peli" th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}" </h1>
+</div>
+
 
 <div class="peli">
     <img class="img-peli" th:src="${'/foto/pelicula/' + pelicula.id}" alt="">
@@ -77,7 +80,7 @@
             <div class="user-profile">
 <!--                FOTO DE PERFIL
 -->                <div th:if="${session.usuariosession} != null">
-                    <img style="width: 10%;" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
+    <img class="foto-perfil" th:src="${'/foto/usuario/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
                 </div>
                 <!---  ...  --->
                 <div>
@@ -132,7 +135,7 @@
                 <div  class="post-container">
                     <div class="post-row">
                         <div class="user-profile">
-                            <img th:src="${'/foto/usuario/'+ rese.usuario.id}">
+                            <img class="foto-usuario" th:src="${'/foto/usuario/'+ rese.usuario.id}">
                             <div>
                                 <p class="titulo" th:text="${rese.getTitulo()}"></p>
                                 <p class="post-text" th:text="${rese.getComentario()}"></p>
