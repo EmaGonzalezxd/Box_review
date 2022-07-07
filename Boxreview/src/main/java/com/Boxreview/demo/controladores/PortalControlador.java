@@ -196,11 +196,14 @@ public class PortalControlador {
         try {
             Usuario usuario = (Usuario) session.getAttribute("usuariosession");
             usuarioServicio.modificar(usuario.getId(), foto, nombre, apellido, email, contrasenia);
+            modelo.put("exito", "!Usuario actualizado¡");
+            return "miperfil.html";
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
+            return "miperfil.html";
         }
-        return "index.html";
+        
     }
 
 }
