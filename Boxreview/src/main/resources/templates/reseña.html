@@ -92,10 +92,9 @@
 
                         <h2>¿Que te parecio?</h2>
                         <form action="/resenar" method="POST" enctype="multipart/form-data">
-                            <h4>Pelicula</h4>               
+                            <h4>Pelicula</h4>    
+                            
                             <select class="form-control" name="pelicula" required>
-                                <option selected value="Elija una pelicula"></option>
-
                                 <option th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}"></option>
                             </select> 
                             <p class="clasificacion" required>
