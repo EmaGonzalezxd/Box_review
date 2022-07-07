@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -172,15 +173,15 @@ public class PortalControlador {
         return "misResenas";
     }
 
-    @PostMapping("/eliminarResena")
-    public String eliminarResena(@RequestParam Resena resena) {
+    @GetMapping("/eliminarResena/{id}")
+    public String eliminarResena(@PathVariable String id) {
         try {
-            resenaServicio.eliminar(resena);
+            resenaServicio.eliminar(id);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return "misResenas";
+        return "redirect:/misResenas";
     }
 
     @GetMapping("/miperfil")
