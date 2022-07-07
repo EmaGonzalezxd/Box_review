@@ -20,8 +20,8 @@
         </div> 
 
         <main class="form">
+          
             <form action="/crearPeli" method="POST" enctype="multipart/form-data">
-                
                 <div class='mb-3'>
                 <label for="titulo" style='color: white'>Titulo</label>
                 <input type="text" id='titulo' class="input-peli" placeholder="ingrese el nombre de la pelicula" name="titulo">
@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class='mb-3'>
-                <label for="anio" style='color: white'>año</label>
+                <label for="anio" style='color: white'>Año</label>
                 <input type="date" id='anio' class="input-peli" placeholder="ingrese el año" name="anio">
                 </div>
                 
@@ -56,7 +56,7 @@
                 <input required type="file" id='foto' placeholder="foto" name="foto">
                 </div>
                 
-                <button type="submit"> Guardar pelicula</button>
+                <button class="boton" type="submit"> Guardar Película </button>
             </form>
         </main>
 

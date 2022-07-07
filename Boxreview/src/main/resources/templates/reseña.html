@@ -17,7 +17,8 @@
             <p class="h5" th:text="${descripcion}" style="color: #000"></p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div> -->
-
+<nav>
+    <div>
         <nav class="navbar navbar-expand-lg bg-light">
 
             <nav class="navbar bg-light">
@@ -97,11 +98,12 @@
 
                         <h2>¿Que te parecio?</h2>
                         <form action="/resenar" method="POST" enctype="multipart/form-data">
-                            <h4>Pelicula</h4>    
+                            <h4>Pelicula</h4>  
                             
-                            <select class="form-control" name="pelicula" required>
-                                <option th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}"></option>
+                            <select  class="form-control" name="pelicula" required>
+                                <option selected  th:each="pelicula : ${pelicula}" th:value="${pelicula.id}" th:text="${pelicula.getTitulo()}"></option>
                             </select> 
+                            
                             <p class="clasificacion" required>
                                 <label class="label-estrella" for="radio0">★</label>
                                 <input class="input-reseña" id="radio0" type="radio" name="calificacion" value="Cinco">

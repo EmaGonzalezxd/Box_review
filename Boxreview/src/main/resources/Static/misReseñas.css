@@ -10,7 +10,7 @@
 
 /* CONTENEDOR DE CALIFICADOR */
 h2 {
-    font-size: 20px;
+    font-size: 20px !important;
     font-family: 'Oxygen', sans-serif;
     color: aliceblue;
     margin-top: 15px;
@@ -19,7 +19,7 @@ h2 {
 }
 
 h4 {
-    font-size: 15px;
+    font-size: 15px !important;
     font-family: 'Oxygen', sans-serif;
     color: aliceblue;
     margin-top: 10px;
@@ -27,8 +27,9 @@ h4 {
 }
 
 .input-reseña {
-    background: #535353;
+    background: #fffefe;
     width: 350px;
+    height: 32px;
     font-size: 15px;
     padding: 12px 25px;
     margin-left: 25px;
@@ -36,13 +37,14 @@ h4 {
     color: rgb(255, 255, 255);
     outline: 0px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 
 
 /* CALIFICADOR DE ESTRELLAS */
 
-p.clasificacion {
+/*p.clasificacion {
     position: relative;
     overflow: hidden;
     display: inline-block;
@@ -65,12 +67,12 @@ p.clasificacion label:hover,
 p.clasificacion label:hover~.label-estrella,
 p.clasificacion input:checked~.label-estrella {
     color: rgb(255, 238, 0);
-}
+}*/
 
 
 /* BOTONES DE MODAL */
 
-.abrir-modal {
+/*.abrir-modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,12 +145,12 @@ p.clasificacion input:checked~.label-estrella {
     background-color: #36ba38;
     border: none;
     border-radius: 15px 15px 15px 15px;
-}
+}*/
 
 
 
 /* MODAL */
-
+/*
 .modalDialog {
     position: fixed;
     font-family: Arial, Helvetica, sans-serif;
@@ -204,7 +206,7 @@ p.clasificacion input:checked~.label-estrella {
 
 .close:hover {
     background: #ffffff;
-}
+}*/
 
 .avatar{
     border-radius: 50%;
@@ -260,3 +262,9 @@ p.clasificacion input:checked~.label-estrella {
     margin-left: -150px;
 }
 
+tbody, td, tfoot, th, thead, tr {
+    border-color: rgb(0, 0, 0) !important;
+    border-style: solid;
+    border-width: 0;
+    background-color: rgb(255, 255, 255);
+}
