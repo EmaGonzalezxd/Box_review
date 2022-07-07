@@ -205,3 +205,58 @@ p.clasificacion input:checked~.label-estrella {
 .close:hover {
     background: #ffffff;
 }
+
+.avatar{
+    border-radius: 50%;
+}
+
+ .navbar {
+    --bs-navbar-padding-y: 2.5rem;
+    width: 100%;
+    height: 90px;
+    background-color: black;
+    position: sticky;
+    top: 0;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    margin-right: -30px;
+}
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color: white;
+    font-family: "Sen", sans-serif;
+  }
+  
+  .logo-container .logo {
+    margin-left:0;
+}
+
+.profile-text-container {
+    margin: -8px 300px;
+   
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: initial !important;
+    margin-top: 0.125rem;
+    margin-left: 87%;
+}
+
+.dropdown-toggle {
+    white-space: pre-wrap !important;
+}
+
+.logo-container .logo {
+    margin-left: -150px;
+}
+
