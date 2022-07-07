@@ -138,6 +138,7 @@
                             <img class="foto-usuario" th:src="${'/foto/usuario/'+ rese.usuario.id}">
                                 <p th:text="${rese.getUsuario().getNombre() + ' ' + rese.getUsuario().getApellido()}" class="post-text"></p>
                             <div>
+                                <p class="post-text" th:text="${rese.getCalificacion() + ' ★'}"></p> 
                                 <p class="titulo" th:text="${rese.getTitulo()}"></p>
                                 <p class="post-text" th:text="${rese.getComentario()}"></p>
                             </div>

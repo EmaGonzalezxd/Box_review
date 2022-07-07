@@ -56,6 +56,12 @@ public class PortalControlador {
         List<Pelicula> peliculasBelicas = peliculaServicio.mostrarBelica();
         modelo.put("pelibelica", peliculasBelicas);
         
+        List<Pelicula> peliculasComedia = peliculaServicio.mostrarComedia();
+        modelo.put("pelicomedia", peliculasComedia);
+        
+        List<Pelicula> peliculasRomance = peliculaServicio.mostrarRomance();
+        modelo.put("peliromance", peliculasRomance);
+        
         return "index.html";
     }
 
@@ -160,7 +166,9 @@ public class PortalControlador {
             return "inicio.html";
         }
         List<Resena> resenas = resenaServicio.buscarResenaPorUsuario(login.getId());
+        List<Pelicula> peliculas = peliculaServicio.mostrarTodos();
         modelo.put("resenas", resenas);
+        modelo.put("peliculas", peliculas);
         return "misResenas.html";
     }
 
