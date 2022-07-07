@@ -291,12 +291,14 @@ p.clasificacion input:checked~.label-estrella {
 /* CONTENEDOR DE BOTON MODAL */
 
 .contenedor-modal {
-    width: 800px;
-    height: 100px;
+    width: 468px;
+    height: 90px;
     margin-top: 300px;
-    background-color: #525252d2;
+    background-color: #b02a37;
     float: left;
     border-radius: 15px;
+    margin-left: 10px;
+    padding: 10px;
 }
 
 /* BOTONES DE MODAL */
@@ -316,7 +318,7 @@ p.clasificacion input:checked~.label-estrella {
     border-radius: 15px 15px 15px 15px;
     transition: all 0.3s;
     float: right;
-    margin-top: -45 !important;
+    margin-top: -72px;
 }
 
 .abrir-modal:hover {
@@ -325,7 +327,12 @@ p.clasificacion input:checked~.label-estrella {
     border: none;
     border-radius: 15px 15px 15px 15px;
 }
-
+p.nombre-usuario{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 25px;
+    color: black;
+}
 .cerrar-modal {
     display: flex;
     justify-content: center;
@@ -342,7 +349,7 @@ p.clasificacion input:checked~.label-estrella {
     border-radius: 15px;
     transition: all 0.3s;
     margin-left: 238px;
-    margin-top: -49px;
+    margin-top: -50px;
 }
 .cerrar-modal:hover {
     color: #ffffff;
@@ -368,6 +375,10 @@ p.clasificacion input:checked~.label-estrella {
     transition:all 0.3s;
 }
 
+img, svg {
+    vertical-align: middle;
+    width: 100px;
+}
 .enviar-reseña:hover{
     color:#ffffff;
     background-color:#36ba38;
@@ -442,15 +453,35 @@ p.clasificacion input:checked~.label-estrella {
 }
 
 
-
-
 /* MOSTRAR RESEÑAS */
 .contenedor-reseñas {
     width: 750px;
-    height: 1000px;
-    background-color: #414141;
+    height: 300px;
+  background:#b02a37;
     border-radius: 30px;
     margin-right: 250px;
     margin-top: 50px;
     float: left;
+}
+
+p.titulo{
+    font-size: 35px;
+    margin: 10px;
+    margin-top: -5px;
+    color: white;
+}
+
+p.post-text{
+    font-size: 20px;
+    margin: 10px;
+    margin-top: -5px;
+    color: white;
+}
+h1.titulo-peli{
+    font-size: 45px;
+    margin-top: 5px;
+    margin: 10px;
+    color: white;
+    font-family: cursive;
+    margin-bottom: -30px;
 }
