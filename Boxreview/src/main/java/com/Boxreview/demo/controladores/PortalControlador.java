@@ -6,6 +6,7 @@ import com.Boxreview.demo.entidades.Resena;
 import com.Boxreview.demo.entidades.Usuario;
 import com.Boxreview.demo.enumerations.EnumCalificacion;
 import com.Boxreview.demo.enumerations.Generos;
+import com.Boxreview.demo.repositorios.PeliculaRepositorio;
 import com.Boxreview.demo.servicios.PeliculaServicio;
 import com.Boxreview.demo.servicios.ResenaServicio;
 import com.Boxreview.demo.servicios.UsuarioServicio;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +34,9 @@ public class PortalControlador {
 
     @Autowired
     private PeliculaServicio peliculaServicio;
+    
+    @Autowired
+    private PeliculaRepositorio peliculaRepositorio;
 
     @GetMapping("/")
     public String inicio() {
@@ -52,6 +55,12 @@ public class PortalControlador {
         List<Pelicula> peliculasBelicas = peliculaServicio.mostrarBelica();
         modelo.put("pelibelica", peliculasBelicas);
         
+        List<Pelicula> peliculasComedia = peliculaServicio.mostrarComedia();
+        modelo.put("pelicomedia", peliculasComedia);
+        
+        List<Pelicula> peliculasRomance = peliculaServicio.mostrarRomance();
+        modelo.put("peliromance", peliculasRomance);
+        
         return "index.html";
     }
 
@@ -64,7 +73,7 @@ public class PortalControlador {
         } catch (Exception e) {
             e.printStackTrace();
             model.put("error", e.getMessage());
-            return "index.html";
+            return "redirect:/index";
         }
 
     }
@@ -85,6 +94,7 @@ public class PortalControlador {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
             modelo.put("error", "Error, este usuario ya esta registrado");
+
             return "inicio.html";
         }
 
@@ -156,23 +166,28 @@ public class PortalControlador {
             return "inicio.html";
         }
         List<Resena> resenas = resenaServicio.buscarResenaPorUsuario(login.getId());
+        List<Pelicula> peliculas = peliculaServicio.mostrarTodos();
         modelo.put("resenas", resenas);
+        modelo.put("peliculas", peliculas);
         return "misResenas.html";
     }
 
-    @PostMapping("/modificarResena")
-    public String modificarResena(HttpSession session, @RequestParam String titulo, @RequestParam String comentario,
-            @RequestParam EnumCalificacion calificacion, @RequestParam Pelicula pelicula) {
+    @GetMapping("/modificarResena/{id}")
+    public String modificarResena(HttpSession session,@RequestParam String peli, @PathVariable String id,@RequestParam String titulo, @RequestParam String comentario,
+            @RequestParam EnumCalificacion calificacion) {
         try {
-            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-            resenaServicio.modificar(titulo, usuario, pelicula, titulo, comentario, calificacion);
+            
+            Pelicula pelicula = peliculaRepositorio.buscarPorTitulo(peli);
+            resenaServicio.modificar(id, pelicula, titulo, comentario, calificacion);
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return "misResenas";
+        return "redirect:/misResenas";
     }
 
+    
     @GetMapping("/eliminarResena/{id}")
     public String eliminarResena(@PathVariable String id) {
         try {
