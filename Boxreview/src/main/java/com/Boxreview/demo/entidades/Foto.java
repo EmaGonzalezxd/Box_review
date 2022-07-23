@@ -25,4 +25,5 @@ public class Foto {
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
 
+    private String hola;
 }
